@@ -6,27 +6,27 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/27 17:53:24 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:49:33 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "../includes/shapes.h"
 
-bool	get_plane_intersection(t_plane *plane, t_ray *ray, t_vector *res)
+bool	get_plane_intersection(t_plane *pl, t_ray *ray, t_vector *res)
 {
 	t_vector	tmp;
 	float		t;
 
-	if (!vector_dot_product(&ray->n, &plane->n))
+	if (!vector_dot_product(&ray->n, &pl->n))
 		return (false);
-	t = -vector_dot_product(&ray->o, &plane->n)
-		/ vector_dot_product(&ray->n, &plane->n);
+	t = -vector_dot_product(&ray->o, &pl->n)
+		/ vector_dot_product(&ray->n, &pl->n);
 	*res = point_on_ray(ray, t);
 	return (true);
 }
 
-bool	get_sphere_intersection(t_sphere *sphere, t_ray *ray,
+bool	get_sphere_intersection(t_sphere *sp, t_ray *ray,
 	t_vector *res)
 {
 	float	d;
