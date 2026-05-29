@@ -6,7 +6,7 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:45:48 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/27 17:42:35 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/05/29 16:00:54 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_plane
 typedef struct s_sphere
 {
 	t_vector	o;
-	float		d;
+	float		r;
 	t_color		color;
 }	t_sphere;
 
@@ -44,11 +44,7 @@ typedef struct s_cylinder
 bool		get_plane_intersection(t_plane *plane, t_ray *ray, t_vector *res);
 bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
 				t_vector *res);
-bool		get_sphere_intersection2(t_sphere *sphere, t_ray *ray,
-				t_vector *res);
 bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
-				t_vector *res);
-bool		get_cylinder_intersection2(t_cylinder *cylinder, t_ray *ray,
 				t_vector *res);
 
 t_vector	sphere_surface_norm_vector(t_sphere *sphere, t_vector *point);
