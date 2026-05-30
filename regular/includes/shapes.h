@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:45:48 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/29 16:00:54 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/05/30 11:31:41 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ typedef struct s_cylinder
 	t_color		color;
 }	t_cylinder;
 
-bool		get_plane_intersection(t_plane *plane, t_ray *ray, t_vector *res);
+bool		get_plane_intersection(t_plane *plane, t_ray *ray, float *res);
 bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
-				t_vector *res);
+				float *res);
 bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
-				t_vector *res);
+				float *res);
 
 t_vector	sphere_surface_norm_vector(t_sphere *sphere, t_vector *point);
 t_vector	cylinder_surface_norm_vector(t_cylinder *cylinder, t_vector *point);
