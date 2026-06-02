@@ -1,32 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   others.h                                           :+:      :+:    :+:   */
+/*   others.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/30 12:31:07 by almighty         ###   ########.fr       */
+/*   Created: 2026/05/30 12:23:29 by almighty          #+#    #+#             */
+/*   Updated: 2026/05/30 12:23:44 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OTHERS_H
-# define OTHERS_H
-
-# include "../includes/vector.h"
-
-typedef struct s_color
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}	t_color;
-
-typedef struct s_pol_coef
-{
-	float	a;
-	float	b;
-	float	c;
-}	t_pol_coef;
-
-#endif

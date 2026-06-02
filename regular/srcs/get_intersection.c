@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/30 11:45:49 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:35:02 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,49 @@ bool	get_plane_intersection(t_plane *pl, t_ray *r, float *res)
 	return (true);
 }
 
-bool	get_sphere_intersection(t_sphere *sp, t_ray *r,
-	float *res)
+bool	get_sphere_intersection(t_sphere *sp, t_ray *r, float *res)
 {
-	t_vector	tmp_sub;
-	float		tmp_dot;
+	t_vector	oo;
+	float		roo;
 	float		d;
 
-	tmp_sub = vector_sub(&r->o, &sp->o);
-	tmp_dot = vector_dot_prod(&tmp_sub, &r->n);
-	d = 4 * tmp_dot * tmp_dot - 4 * (vector_square(&tmp_sub) - sp->r * sp->r);
+	oo = vector_sub(&r->o, &sp->o);
+	roo = vector_dot_prod(&oo, &r->n);
+	d = 4 * roo * roo - 4 * (vector_square(&oo) - sp->r * sp->r);
 	if (d < 0)
 		return (false);
 	d = sqrt(d);
-	tmp_dot *= -2;
-	if (tmp_dot < -d)
+	roo *= -2;
+	if (roo < -d)
 		return (false);
-	if (tmp_dot >= d && tmp_dot - d < tmp_dot + d)
-		*res = (tmp_dot - d) / 2;
+	if (roo >= d && roo - d < roo + d)
+		*res = (roo - d) / 2;
 	else
-		*res = (tmp_dot + d) / 2;
+		*res = (roo + d) / 2;
 	return (true);
 }
+
+// bool	get_cylinder_intersection(t_cylinder *cy, t_ray *r, float *res)
+// {
+// 	t_vector	oo;
+// 	float		nr;
+// 	float		noo;
+// 	float		d;
+
+// 	oo = vector_sub(&r->o, &cy->o);
+// 	nr = vector_dot_prod(&r->n, &cy->n);
+// 	noo = vector_dot_prod(&cy->n, &oo);
+// 	d = 4 * pow(vector_dot_prod(&r->n, &oo) - nr * noo, 2) - 4 * (1 - nr * nr)
+// 		* (vector_square(&oo) + noo * noo - cy->r * cy->r);
+// 	if (d < 0)
+// 		return (false);
+// 	d = sqrt(d);
+// 	nr *= -2;
+// 	if (nr < -d)
+// 		return (false);
+// 	if (nr >= d && nr - d < nr + d)
+// 		*res = (nr - d) / 2;
+// 	else
+// 		*res = (nr + d) / 2;
+// 	return (true);
+// }

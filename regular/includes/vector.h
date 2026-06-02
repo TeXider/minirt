@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:24:03 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/30 11:40:23 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 00:01:10 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_vector	vector_sub(t_vector *v, t_vector *u);
 float		vector_dot_prod(t_vector *v, t_vector *u);
 float		vector_square(t_vector *v);
 float		vector_norm(t_vector *v);
+void		vector_normalize(t_vector *v);
 
 #endif

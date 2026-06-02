@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   others.h                                           :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/30 12:31:07 by almighty         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OTHERS_H
-# define OTHERS_H
+#include "mlx_int.h"
 
-# include "../includes/vector.h"
-
-typedef struct s_color
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}	t_color;
-
-typedef struct s_pol_coef
-{
-	float	a;
-	float	b;
-	float	c;
-}	t_pol_coef;
-
-#endif
+	XCloseDisplay(xvar->display);
+}
