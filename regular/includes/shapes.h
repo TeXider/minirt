@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:45:48 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/01 21:50:12 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:10:44 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SHAPES_H
 
 # include <stdbool.h>
-# include "../includes/vector.h"
-# include "../includes/ray.h"
-# include "../includes/others.h"
+# include "vector.h"
+# include "ray.h"
+# include "others.h"
 
 typedef struct s_plane
 {

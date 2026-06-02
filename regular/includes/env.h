@@ -1,32 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   others.h                                           :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/02 12:10:26 by almighty         ###   ########.fr       */
+/*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
+/*   Updated: 2026/06/02 12:10:14 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OTHERS_H
-# define OTHERS_H
-
-# include "vector.h"
-
-typedef struct s_color
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}	t_color;
-
-typedef struct s_pol_coef
-{
-	float	a;
-	float	b;
-	float	c;
-}	t_pol_coef;
-
-#endif
+#include "shapes.h"

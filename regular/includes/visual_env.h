@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visual_env.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 16:07:17 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/27 16:22:33 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:11:00 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define VISUAL_ENV_H
 
 # include <stdbool.h>
-# include "../includes/vector.h"
-# include "../includes/others.h"
+# include "vector.h"
+# include "others.h"
 
 typedef struct s_camera
 {
