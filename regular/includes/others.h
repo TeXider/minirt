@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/02 13:59:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:00:15 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include "vector.h"
 
 # define INVALID_ARG_COUNT_MSG	"./minirt : Invalid argument count"
-# define EXEC_HINT				"Usage: ./minirt [rt_scene_path]"
+# define INVALID_ARG_COUNT_HINT	"Usage: ./minirt [rt_scene_path]"
+# define MLX_INIT_ERR_MSG		"MinilibX failed to initiate"
+# define MLX_INIT_ERR_HINT		"Oh... well... there's nothing we can do"
+# define INVALID_FILE_EXTENSION	""
 # define PARSING	0
 # define INIT		1
 # define SYSTEM		2
