@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 16:07:17 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/02 14:04:11 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:21:54 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ typedef struct s_visual_env
 	bool		has_alight;
 	bool		has_light;
 	t_plane		*planes;
+	size_t		planes_len;
 	t_sphere	*spheres;
-	t_cylinder	*cylinder;
+	size_t		spheres_len;
+	t_cylinder	*cylinders;
+	size_t		cylinders_len;
 }	t_visual_env;
 
 #endif

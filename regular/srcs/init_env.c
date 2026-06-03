@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:20:42 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/02 15:10:43 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:08:18 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,25 @@ static bool	check_file_extension(char *filename, t_env *env)
 	return (true);
 }
 
+static void	clean_garbage(t_env *env)
+{
+	env->mlx = NULL;
+	env->mlx_win = NULL;
+	env->img.img = NULL;
+	env->vis_env.has_cam = false;
+	env->vis_env.has_alight = false;
+	env->vis_env.has_light = false;
+	env->vis_env.planes = NULL;
+	env->vis_env.planes_len = 0;
+	env->vis_env.spheres = NULL;
+	env->vis_env.spheres_len = 0;
+	env->vis_env.cylinders = NULL;
+	env->vis_env.cylinders_len = 0;
+}
+
 bool	init_env(t_env *env, char *filename)
 {
+	clean_garbage(env);
 	return (check_file_extension(filename, env)
 		|| parse_file(filename, env)
 		|| init_mlx(filename, env));
