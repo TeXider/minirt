@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/04 22:06:33 by almighty         ###   ########.fr       */
+/*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
+/*   Updated: 2026/06/04 22:09:56 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/env.h"
+#ifndef PARSING_H
+# define PARSING_H
 
-t_vector	point_on_ray(t_ray *r, float t)
+# include "env.h"
+
+typedef struct s_parsing
 {
-	t_vector	tmp;
+	int		fd;
+	char	buff[1028];
+	int		i;
+	int		read_len;
+	bool	is_parsing_over;
+	int		line_count;
+}	t_parsing;
 
-	tmp = vector_scale(&r->n, t);
-	return (vector_add(&r->o, &tmp));
-}
+bool	parse_file(char *filename, t_env *env);
+
+bool	actualize_buffer(t_parsing *p);
+bool	go_to_next_obj(t_parsing *p);
+bool	go_to_next_field(t_parsing *p);
+
+#endif

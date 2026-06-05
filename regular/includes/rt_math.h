@@ -1,22 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shapes.h                                           :+:      :+:    :+:   */
+/*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 15:45:48 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/02 12:10:44 by almighty         ###   ########.fr       */
+/*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
+/*   Updated: 2026/06/04 22:03:15 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHAPES_H
-# define SHAPES_H
+#ifndef RT_MATH_H
+# define RT_MATH_H
 
 # include <stdbool.h>
-# include "vector.h"
-# include "ray.h"
 # include "others.h"
+
+// VECTORS
+
+typedef struct s_vector
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_vector;
+
+void		init_vector(t_vector *v, float x, float y, float z);
+t_vector	vector_scale(t_vector *v, float k);
+t_vector	vector_add(t_vector *v, t_vector *u);
+t_vector	vector_sub(t_vector *v, t_vector *u);
+float		vector_dot_prod(t_vector *v, t_vector *u);
+float		vector_square(t_vector *v);
+float		vector_norm(t_vector *v);
+void		vector_normalize(t_vector *v);
+
+// RAYS
+
+typedef struct s_ray
+{
+	t_vector	o;
+	t_vector	n;
+}	t_ray;
+
+t_vector	point_on_ray(t_ray *ray, float t);
+
+// SHAPES
 
 typedef struct s_plane
 {

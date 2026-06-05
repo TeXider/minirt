@@ -6,55 +6,34 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/03 11:00:25 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/04 22:11:16 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include "../includes/env.h"
+#include "../includes/parsing.h"
 
-static bool	actualize_buffer(t_parsing *p)
-{
-	p->read_len = read(p->fd, p->buff, 1028);
-	if (read == -1)
-	{
-		print_error(READ_ERR, READ_ERR_HINT, NULL);
-		return (true);
-	}
-	p->i = 0;
-	p->is_parsing_over = (p->read_len == 0);
-	return (false);
-}
-
-static bool	init_parsing(char *filename, t_parsing *p)
+static bool	init_parsing(char *filename, t_parsing *p, t_visual_env *v_env)
 {
 	p->fd = open(filename, O_RDONLY);
 	if (p->fd == -1)
 	{
-		print_error(FILE_ERR, filename, NULL);
+		print_error(OPEN_ERR, filename);
 		return (true);
 	}
 	return (actualize_buffer(p));
-}
-
-static bool	go_to_next_obj(t_parsing *p)
-{
-	while (!p->is_parsing_over && p->buff[p->i] == ' ' && p->buff[p->i] == '\n')
-	{
-		p->i++;
-		if (p->i == p->read_len && actualize_buffer(p))
-			return (true);
-	}
-	return (false);
 }
 
 static bool	final_check(t_parsing *p)
 {
 	if (p->buff[p->i])
 	{
-		print_parsing_error();
+		print_parsing_error(p, UNKNOWN_ELEMENT_ERR);
+		return (true);
 	}
+	return (false);
 }
 
 static bool	parse_shape(t_parsing *p, t_env *env)
@@ -68,13 +47,13 @@ static bool	parse_shape(t_parsing *p, t_env *env)
 	else if (p->buff[p->i] == 'p' && p->i + 1 < p->read_len
 		&& p->buff[p->i + 1] == 'l')
 	{
-		if (parse_sphere(p, env))
+		if (parse_plane(p, env))
 			return (true);
 	}
 	else if (p->buff[p->i] == 'c' && p->i + 1 < p->read_len
 		&& p->buff[p->i + 1] == 'y')
 	{
-		if (parse_sphere(p, env))
+		if (parse_cylinder(p, env))
 			return (true);
 	}
 	else
@@ -86,7 +65,7 @@ static bool	parse_obj(t_parsing *p, t_env *env)
 {
 	if (p->buff[p->i] == 'A')
 	{
-		if (parse_alighting(p, env))
+		if (parse_alight(p, env))
 			return (true);
 	}
 	else if (p->buff[p->i] == 'C')
@@ -108,7 +87,7 @@ bool	parse_file(char *filename, t_env *env)
 {
 	t_parsing	p;
 
-	if (init_parsing(filename, &p))
+	if (init_parsing(filename, &p, env))
 		return (true);
 	while (!p.is_parsing_over)
 		if (go_to_next_obj(&p)

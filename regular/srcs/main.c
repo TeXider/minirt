@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/02 14:43:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/04 21:40:22 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		print_error(INVALID_ARG_COUNT_MSG, INVALID_ARG_COUNT_HINT);
+		print_error(INVALID_ARG_COUNT_ERR, NULL);
 		return (1);
 	}
 	if (init_env(&env, argv[1]))

@@ -6,12 +6,11 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:27:56 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/05/30 11:44:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/04 22:06:59 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "../includes/vector.h"
+#include "../includes/env.h"
 
 inline float	vector_square(t_vector *v)
 {
