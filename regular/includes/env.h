@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/04 22:10:38 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/07 17:25:37 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ typedef struct s_env
 	void			*mlx;
 	void			*mlx_win;
 	t_img			img;
+	char			*file_name;
 	t_visual_env	vis_env;
-	char			*err_msg;
-	char			*err_hint;
+	int				err;
 }	t_env;
 
-bool	init_env(t_env *env, char *filename);
+bool	init_env(t_env *env, char *file_name);
 
 #endif
