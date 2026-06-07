@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 18:14:48 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/07 20:48:36 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ static bool	init_parsing(t_parsing *p, t_env *env)
 	p->curr_field_i = 0;
 	p->parsing_err = NO_PARSING_ERR;
 	p->env = env;
-	return (actualize_buffer(p));
+	if (actualize_buffer(p))
+	{
+		close(p->fd);
+		return (true);
+	}
+	return (false);
 }
 
 static bool	parse_shape(t_parsing *p, t_visual_env *v_env)
@@ -83,8 +88,10 @@ bool	parse_file(t_env *env)
 		{
 			env->err += (p.parsing_err != NO_PARSING_ERR)
 				* (p.parsing_err - env->err);
+			close(p.fd);
 			return (true);
 		}
 	}
+	close(p.fd);
 	return (false);
 }
