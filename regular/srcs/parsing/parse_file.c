@@ -3,34 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 21:20:58 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:27:26 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "../includes/env.h"
 #include "../includes/parsing.h"
 
 static bool	init_parsing(t_parsing *p, t_env *env)
 {
+	p->line = NULL;
 	p->fd = open(env->file_name, O_RDONLY);
 	if (p->fd == -1)
 	{
 		env->err = OPEN_ERR;
 		return (true);
 	}
+	p->eof = false;
 	p->line_count = 0;
-	p->parsing_ctxt = 0;
+	p->parsing_id = 0;
 	p->comma_expected = false;
 	p->curr_field_name = NULL;
-	p->curr_field_i = 0;
 	p->parsing_err = NO_PARSING_ERR;
 	p->env = env;
-	if (actualize_buffer(p))
+	if (go_to_next_line(p))
 	{
 		close(p->fd);
 		return (true);
@@ -38,41 +39,40 @@ static bool	init_parsing(t_parsing *p, t_env *env)
 	return (false);
 }
 
-static bool	parse_shape(t_parsing *p, t_visual_env *v_env)
+static bool	parse_shape(t_parsing *p)
 {
-	if (p->buff[p->i] == 's' && p->i + 1 < p->read_len
-		&& p->buff[p->i + 1] == 'p'
-		&& (p->i + 2 == p->read_len || p->buff[p->i + 2] == ' '))
-			return (parse_sphere(p, v_env));
-	else if (p->buff[p->i] == 'p' && p->i + 1 < p->read_len
-		&& p->buff[p->i + 1] == 'l'
-		&& (p->i + 2 == p->read_len || p->buff[p->i + 2] == ' '))
-		return (parse_plane(p, v_env));
-	else if (p->buff[p->i] == 'c' && p->i + 1 < p->read_len
-		&& p->buff[p->i + 1] == 'y'
-		&& (p->i + 2 == p->read_len || p->buff[p->i + 2] == ' '))
-		return (parse_cylinder(p, v_env));
-	else if (p->buff[p->i])
+	if (p->line[p->line_i] == 'p' && p->line[p->line_i + 1] == 'l'
+		&& !(p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
+		return (parse_plane(p, p->env->vis_env));
+	if (p->line[p->line_i] == 's' && p->line[p->line_i + 1] == 'p'
+		&& !(p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
+		return (parse_sphere(p, p->env->vis_env));
+	else if (p->line[p->line_i] == 'c' && p->line[p->line_i + 1] == 'y'
+		&& !(p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
+		return (parse_cylinder(p, p->env->vis_env));
+	else
 	{
-		print_parsing_error(UNKNOWN_ELEMENT_ERR, p);
+		p->parsing_err = UNKNOWN_ELEMENT_ERR;
 		return (true);
 	}
 	return (false);
 }
 
-static bool	parse_obj(t_parsing *p, t_visual_env *v_env)
+static bool	parse_obj(t_parsing *p)
 {
-	if (p->buff[p->i] == 'A'
-		&& (p->i + 1 == p->read_len || p->buff[p->i + 1] == ' '))
-		return (parse_alight(p, v_env));
-	else if (p->buff[p->i] == 'C'
-		&& (p->i + 1 == p->read_len || p->buff[p->i + 1] == ' '))
-		return (parse_camera(p, v_env));
-	else if (p->buff[p->i] == 'L'
-		&& (p->i + 1 == p->read_len || p->buff[p->i + 1] == ' '))
-		return (parse_camera(p, v_env));
+	if (p->eof)
+		return (false);
+	if (p->line[p->line_i] == 'A'
+		&& !(p->line[p->line_i + 1] || p->line[p->line_i + 1] == ' '))
+		return (parse_alight(p, p->env->vis_env));
+	else if (p->line[p->line_i] == 'C'
+		&& !(p->line[p->line_i + 1] || p->line[p->line_i + 1] == ' '))
+		return (parse_camera(p, p->env->vis_env));
+	else if (p->line[p->line_i] == 'L'
+		&& !(p->line[p->line_i + 1] || p->line[p->line_i + 1] == ' '))
+		return (parse_light(p, p->env->vis_env));
 	else
-		return (parse_shape(p, v_env));
+		return (parse_shape(p));
 	return (false);
 }
 
@@ -82,17 +82,14 @@ bool	parse_file(t_env *env)
 
 	if (init_parsing(&p, &env))
 		return (true);
-	while (!p.parsing_over)
+	while (!p.eof)
 	{
 		if (go_to_next_obj(&p)
-			|| (!p.parsing_over && parse_obj(&p, &env->vis_env)))
+			|| parse_obj(&p))
 		{
-			env->err += (p.parsing_err != NO_PARSING_ERR)
-				* (p.parsing_err - env->err);
-			close(p.fd);
+			env->err += !env->err * p.parsing_err;
 			return (true);
 		}
 	}
-	close(p.fd);
 	return (false);
 }

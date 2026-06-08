@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 21:23:50 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:29:52 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,43 @@
 # define MULTI_DEF_ERR			-5
 # define OUT_OF_RANGE_ERR		-6
 
-# define ALIGHT		0
-# define CAM		1
-# define LIGHT		2
-# define PLANE		3
-# define SPHERE		4
-# define CYLINDER	5
+# define ALIGHT		0b0001
+# define CAM		0b0010
+# define LIGHT		0b0011
+# define PLANE		0b0100
+# define SPHERE		0b1000
+# define CYLINDER	0b1100
+
+# define SINGLETON_MASK	0b0011
+# define SHAPE_MASK		0b1100
+
+
 
 typedef struct s_parsing
 {
 	int		fd;
-	char	buff[1028];
-	int		i;
-	int		read_len;
-	bool	parsing_over;
+	char	buff[1024];
+	size_t	buff_i;
+	long	read_len;
+	bool	eof;
+	char	*line;
+	size_t	line_i;
+	size_t	line_count;
 	bool	comma_expected;
-	int		line_count;
-	int		parsing_ctxt;
+	int		parsing_id;
 	char	*curr_field_name;
-	int		curr_field_i;
+	size_t	curr_field_i;
 	int		parsing_err;
 	t_env	*env;
 }	t_parsing;
 
 bool	parse_file(t_env *env);
 
-bool	refresh_buffer(t_parsing *p);
+bool	*go_to_next_line(t_parsing *p);
+bool	is_end_of_field(t_parsing *p);
 bool	go_to_next_obj(t_parsing *p);
 bool	go_to_next_field(char *field_name, t_parsing *p);
-bool	check_fields_over(t_parsing *p);
+bool	check_end_of_obj(t_parsing *p);
+bool	init_parsing(t_parsing *p, t_env *env);
 
 #endif

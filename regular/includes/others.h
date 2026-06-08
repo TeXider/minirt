@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/07 18:19:18 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:21:10 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OTHERS_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "env.h"
 
 # define NO_ERR						0
@@ -45,5 +46,19 @@ typedef struct s_pol_coef
 bool	extend_planes_len(t_visual_env *v_env);
 bool	extend_spheres_len(t_visual_env *v_env);
 bool	extend_cylinders_len(t_visual_env *v_env);
+
+void	safe_free(void **ptr);
+bool	challoc(char **dst, size_t len, t_env *env);
+
+/*GET_NEXT_LINE*/
+
+typedef struct s_buffer
+{
+	char	*content;
+	ssize_t	len;
+	ssize_t	index;
+}	t_buffer;
+
+char	*get_next_line(int fd);
 
 #endif
