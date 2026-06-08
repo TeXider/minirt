@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 18:14:20 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/07 21:23:50 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct s_parsing
 	char	buff[1028];
 	int		i;
 	int		read_len;
-	bool	is_parsing_over;
+	bool	parsing_over;
+	bool	comma_expected;
 	int		line_count;
 	int		parsing_ctxt;
 	char	*curr_field_name;
@@ -45,9 +46,9 @@ typedef struct s_parsing
 	t_env	*env;
 }	t_parsing;
 
-bool	parse_file(char *filename, t_visual_env *v_env);
+bool	parse_file(t_env *env);
 
-bool	actualize_buffer(t_parsing *p);
+bool	refresh_buffer(t_parsing *p);
 bool	go_to_next_obj(t_parsing *p);
 bool	go_to_next_field(char *field_name, t_parsing *p);
 bool	check_fields_over(t_parsing *p);

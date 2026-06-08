@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 18:32:13 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/07 21:16:12 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 	}
 	p->i++;
 	if (go_to_next_field("intensity", p)
-		|| get_float(&v_env->alight.intensity, 0.0, 1.0)
+		|| get_float(&v_env->alight.intensity, 0.0, 1.0, p)
 		|| go_to_next_field("color", p)
-		|| get_color(&v_env->alight.color)
+		|| get_color(&v_env->alight.color, p)
 		|| check_fields_over(p))
 		return (true);
 	{
@@ -45,11 +45,11 @@ bool	parse_cam(t_parsing *p, t_visual_env *v_env)
 	}
 	p->i++;
 	if (go_to_next_field("position", p)
-		|| get_vector(&v_env->cam.o, -1024.0, 1023.0)
+		|| get_vector(&v_env->cam.o, -999.0, 999.0, p)
 		|| go_to_next_field("normal_vector", p)
-		|| get_vector(&v_env->cam.n, -1.0, 1.0)
+		|| get_vector(&v_env->cam.n, -1.0, 1.0, p)
 		|| go_to_next_field("horizontal_fov", p)
-		|| get_int(&v_env->cam.h_fov, 0, 180)
+		|| get_int(&v_env->cam.h_fov, 0, 180, p)
 		|| check_fields_over(p))
 		return (true);
 	{
