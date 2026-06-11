@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_field.c                                        :+:      :+:    :+:   */
+/*   get_num.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 21:09:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 13:58:20 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:54:00 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static bool	get_mantissa(float *dst, float range_min, float range_max,
 		dec /= 10.0;
 		p->line_i++;
 	}
-	*dst += mantissa * (-2.0 * (*dst < 0) + 1.0);
+	*dst += mantissa * (-2.0 * ((*((int *)(dst)) & (1 << 31)) != 0) + 1.0);
 	return (check_range(*dst, range_min, range_max, p));
 }
 
@@ -60,7 +60,7 @@ bool	get_float(float *dst, float range_min, float range_max, t_parsing *p)
 			return (true);
 		p->line_i++;
 	}
-	*dst *= -2.0 * sgn + 1.0;
+	*((int *)(dst)) |= (1 << 31);
 	if (!is_end_of_field(p) && get_mantissa(dst, range_min, range_max, p))
 		return (true);
 	if (start_i == p->line_i || (!is_end_of_field(p)
