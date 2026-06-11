@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 20:09:30 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:26:58 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 
 typedef struct s_env	t_env;
 typedef struct s_visual_env	t_visual_env;
+typedef struct s_vector	t_vector;
+typedef struct s_color	t_color;
 
 typedef struct s_file
 {
