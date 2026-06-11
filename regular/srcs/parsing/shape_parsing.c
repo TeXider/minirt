@@ -6,9 +6,90 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/05 20:43:51 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 22:58:24 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../../includes/parsing.h"
 
+bool	parse_plane(t_parsing *p, t_visual_env *v_env)
+{
+	// p->parsing_id = ALIGHT;
+	// if (v_env->has_alight)
+	// {
+	// 	p->parsing_err = MULTI_DEF_ERR;
+	// 	return (true);
+	// }
+	// if (go_to_next_field("intensity", p)
+	// 	|| get_float(&v_env->alight.intensity, 0.0, 1.0, p)
+	// 	|| go_to_next_field("color", p)
+	// 	|| get_color(&v_env->alight.color, p)
+	// 	|| check_end_of_obj(p))
+	// 	return (true);
+	// {
+	// 	p->parsing_err = EXTRA_FIELD_ERR;
+	// 	return (true);
+	// }
+	// v_env->has_alight = true;
+	// return (false);
+	(void) v_env;
+	printf("i believe i can fly\n");
+	go_to_next_line(&p->file, p);
+	return (false);
+}
+
+bool	parse_sphere(t_parsing *p, t_visual_env *v_env)
+{
+	// p->parsing_id = CAM;
+	// if (v_env->has_cam)
+	// {
+	// 	p->parsing_err = MULTI_DEF_ERR;
+	// 	return (true);
+	// }
+	// if (go_to_next_field("position", p)
+	// 	|| get_vector(&v_env->cam.o, -1023.99996, 1023.99996, p)
+	// 	|| go_to_next_field("normal_vector", p)
+	// 	|| get_vector(&v_env->cam.n, -1.0, 1.0, p)
+	// 	|| go_to_next_field("horizontal_fov", p)
+	// 	|| get_int(&v_env->cam.h_fov, 0, 180, p)
+	// 	|| check_end_of_obj(p))
+	// 	return (true);
+	// {
+	// 	p->parsing_err = EXTRA_FIELD_ERR;
+	// 	return (true);
+	// }
+	// v_env->has_alight = true;
+	// return (false);
+	(void) v_env;
+	printf("assume spherical cow\n");
+	go_to_next_line(&p->file, p);
+	return (false);
+}
+
+bool	parse_cylinder(t_parsing *p, t_visual_env *v_env)
+{
+	// p->parsing_id = CAM;
+	// if (v_env->has_cam)
+	// {
+	// 	p->parsing_err = MULTI_DEF_ERR;
+	// 	return (true);
+	// }
+	// if (go_to_next_field("position", p)
+	// 	|| get_vector(&v_env->cam.o, -1023.99996, 1023.99996, p)
+	// 	|| go_to_next_field("normal_vector", p)
+	// 	|| get_vector(&v_env->cam.n, -1.0, 1.0, p)
+	// 	|| go_to_next_field("horizontal_fov", p)
+	// 	|| get_int(&v_env->cam.h_fov, 0, 180, p)
+	// 	|| check_end_of_obj(p))
+	// 	return (true);
+	// {
+	// 	p->parsing_err = EXTRA_FIELD_ERR;
+	// 	return (true);
+	// }
+	// v_env->has_alight = true;
+	// return (false);
+	(void) v_env;
+	printf("avec un berlingot de lait\n");
+	go_to_next_line(&p->file, p);
+	return (false);
+}

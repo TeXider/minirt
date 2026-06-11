@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 19:29:52 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/06/11 12:57:50 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,29 @@
 # define SINGLETON_MASK	0b0011
 # define SHAPE_MASK		0b1100
 
+# define BUFF_SIZE	128
 
+typedef struct s_env	t_env;
+typedef struct s_visual_env	t_visual_env;
 
-typedef struct s_parsing
+typedef struct s_file
 {
 	int		fd;
-	char	buff[1024];
+	char	buff[BUFF_SIZE];
 	size_t	buff_i;
 	long	read_len;
 	bool	eof;
+}	t_file;
+
+typedef struct s_parsing
+{
+	t_file	file;
 	char	*line;
 	size_t	line_i;
 	size_t	line_count;
 	bool	comma_expected;
 	int		parsing_id;
+	bool	eop;
 	char	*curr_field_name;
 	size_t	curr_field_i;
 	int		parsing_err;
@@ -55,11 +64,17 @@ typedef struct s_parsing
 
 bool	parse_file(t_env *env);
 
-bool	*go_to_next_line(t_parsing *p);
+bool	go_to_next_line(t_file *f, t_parsing *p);
 bool	is_end_of_field(t_parsing *p);
 bool	go_to_next_obj(t_parsing *p);
 bool	go_to_next_field(char *field_name, t_parsing *p);
 bool	check_end_of_obj(t_parsing *p);
-bool	init_parsing(t_parsing *p, t_env *env);
+
+bool	parse_alight(t_parsing *p, t_visual_env *v_env);
+bool	parse_cam(t_parsing *p, t_visual_env *v_env);
+bool	parse_light(t_parsing *p, t_visual_env *v_env);
+bool	parse_plane(t_parsing *p, t_visual_env *v_env);
+bool	parse_sphere(t_parsing *p, t_visual_env *v_env);
+bool	parse_cylinder(t_parsing *p, t_visual_env *v_env);
 
 #endif

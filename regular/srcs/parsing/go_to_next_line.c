@@ -3,77 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   go_to_next_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:00:17 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/08 18:52:39 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/06/08 23:05:48 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../../includes/parsing.h"
 
-bool	refresh_buffer(t_parsing *p)
+bool	refresh_buffer(t_file *f, t_parsing *p)
 {
-	if (p->eof)
-		return (false);
-	p->read_len = read(p->fd, p->buff, 1024);
-	if (p->read_len == -1)
+	f->read_len = read(f->fd, f->buff, BUFF_SIZE);
+	if (f->read_len == -1)
 	{
 		p->env->err = READ_ERR;
 		return (true);
 	}
-	p->buff_i = 0;
-	p->eof = (p->read_len == 0);
+	f->buff_i = 0;
+	f->eof = (f->read_len == 0);
 	return (false);
 }
 
-static bool	alloc_curr_line(size_t *len, t_parsing *p)
+static bool	alloc_curr_line(size_t *len, t_file *f, t_parsing *p)
 {
-	ssize_t	i;
+	size_t	i;
 	char	*tmp;
 
+	if (*len && f->read_len && f->read_len < BUFF_SIZE)
+		return (false);
 	if (!*len)
 	{
-		*len = 1024;
+		*len = BUFF_SIZE;
 		if (challoc(&p->line, *len, p->env))
 			return (true);
 	}
 	else
 	{
-		*len += 1024;
-		if (challoc(&tmp, *len, p->env))
+		if (challoc(&tmp, *len + BUFF_SIZE, p->env))
 			return (true);
 		i = -1;
 		while (++i < *len)
 			tmp[i] = p->line[i];
 		free(p->line);
 		p->line = tmp;
+		*len += BUFF_SIZE;
 	}
 	return (0);
 }
 
-bool	*go_to_next_line(t_parsing *p)
+bool	go_to_next_line(t_file *f, t_parsing *p)
 {
 	size_t	line_len;
 
-	safe_free(&p->line);
+	if (f->eof)
+	{
+		p->eop = true;
+		return (false);
+	}
+	safe_free((void **) &p->line);
 	line_len = 0;
-	if (alloc_curr_line(&line_len, p)
-		|| refresh_buffer(p))
+	if (alloc_curr_line(&line_len, f, p)
+		|| (!f->read_len && refresh_buffer(f, p)))
 		return (true);
 	p->line_i = 0;
-	while (!p->eof && p->buff[p->buff_i] && p->buff[p->buff_i] != '\n')
+	while (!f->eof && f->buff[f->buff_i] && f->buff[f->buff_i] != '\n')
 	{
-		p->line[p->line_i] = p->buff[p->buff_i];
+		p->line[p->line_i] = f->buff[f->buff_i];
 		p->line_i++;
-		p->buff_i++;
-		if (p->buff_i == p->read_len
-			&& (alloc_curr_line(&line_len, p)
-				|| refresh_buffer(p)))
+		f->buff_i++;
+		if (f->buff_i == (size_t) f->read_len
+			&& (alloc_curr_line(&line_len, f, p)
+				|| refresh_buffer(f, p)))
 			return (true);
 	}
 	p->line[p->line_i] = '\0';
 	p->line_i = 0;
-	p->buff_i++;
-	return (p->buff_i == p->read_len && refresh_buffer(p));
+	f->buff_i++;
+	return (f->buff_i == (size_t) f->read_len && refresh_buffer(f, p));
 }

@@ -6,11 +6,11 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:20:42 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 18:26:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:25:40 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/env.h"
+#include "../../includes/env.h"
 
 bool	check_file_extension(char *file_name, t_env *env)
 {
@@ -47,6 +47,6 @@ bool	init_env(t_env *env, char *file_name)
 	env->vis_env.planes_len = 0;
 	env->vis_env.spheres_len = 0;
 	env->vis_env.cylinders_len = 0;
-	env->err = 0;
-	return (check_file_extension(env, file_name));
+	env->err = NO_ERR;
+	return (check_file_extension(file_name, env));
 }

@@ -6,12 +6,12 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/04 22:05:08 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:20:16 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../includes/env.h"
+#include "../../includes/env.h"
 
 bool	get_plane_intersection(t_plane *pl, t_ray *r, float *res)
 {

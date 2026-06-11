@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 17:25:37 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:48:00 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define ENV_H
 
 # include <stdbool.h>
-# include <mlx.h>
+# include <stdio.h>
+# include "../../mlx_linux/mlx.h"
 # include "rt_math.h"
 
 # define WIN_X	1280

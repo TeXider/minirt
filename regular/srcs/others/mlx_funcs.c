@@ -6,11 +6,11 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 18:25:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 20:21:46 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:19:07 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/env.h"
+#include "../../includes/env.h"
 
 bool	init_mlx(t_env *env)
 {

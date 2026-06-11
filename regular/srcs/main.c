@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/07 18:30:15 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:12:35 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ int	main(int argc, char **argv)
 		print_error(&env);
 		exit(1);
 	}
-	if (init_env(&env, argv[1])
-		|| parse_file(&env)
-		|| init_mlx(&env))
-		print_error(&env);
-	else
-	{
-		init_hooks(&env);
-		render_image(&env);
-		mlx_loop(env.mlx);
-	}
-	clean_exit(&env);
+	// if (init_env(&env, argv[1])
+	// 	|| parse_file(&env)
+	// 	|| init_mlx(&env))
+	// 	print_error(&env);
+	// else
+	// {
+	// 	init_hooks(&env);
+	// 	render_image(&env);
+	// 	mlx_loop(env.mlx);
+	// }
+	// clean_exit(&env);
+	init_env(&env, argv[1]);
+	parse_file(&env);
 }

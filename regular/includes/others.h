@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/08 18:21:10 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:33:17 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "env.h"
+# include "parsing.h"
 
 # define NO_ERR						0
 # define INVALID_ARG_COUNT_ERR		1 //"./minirt : Invalid number of arguments" "Usage: ./minirt [rt_scene_path] (File must end with .rt)"
@@ -27,7 +27,9 @@
 
 # define IS_PARSING_ERR	(1 << 31)
 
+typedef struct s_env	t_env;
 typedef struct s_visual_env	t_visual_env;
+typedef struct s_parsing	t_parsing;
 
 typedef struct s_color
 {
@@ -50,6 +52,9 @@ bool	extend_cylinders_len(t_visual_env *v_env);
 void	safe_free(void **ptr);
 bool	challoc(char **dst, size_t len, t_env *env);
 
+void	print_parsing_error(t_parsing *p);
+void	print_error(t_env *env);
+
 /*GET_NEXT_LINE*/
 
 typedef struct s_buffer
@@ -58,7 +63,5 @@ typedef struct s_buffer
 	ssize_t	len;
 	ssize_t	index;
 }	t_buffer;
-
-char	*get_next_line(int fd);
 
 #endif

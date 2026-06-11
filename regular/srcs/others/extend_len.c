@@ -6,12 +6,12 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:17:47 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/04 21:51:31 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:18:58 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "../includes/env.h"
+#include "../../includes/env.h"
 
 static bool	safe_alloc(void **dst, size_t size)
 {
