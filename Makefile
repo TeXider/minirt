@@ -6,7 +6,7 @@
 #    By: almighty <almighty@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/06/08 21:56:18 by almighty         ###   ########.fr        #
+#    Updated: 2026/06/11 21:37:47 by almighty         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,15 @@ SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/others/error_handling.c\
 			$(DIR_SRCS)/others/init_env.c\
 			$(DIR_SRCS)/others/others.c\
+			$(DIR_SRCS)/others/extend_len.c\
 			$(DIR_SRCS)/parsing/go_to_next_line.c\
 			$(DIR_SRCS)/parsing/parse_file.c\
 			$(DIR_SRCS)/parsing/parsing_utils.c\
 			$(DIR_SRCS)/parsing/shape_parsing.c\
 			$(DIR_SRCS)/parsing/singleton_parsing.c\
+			$(DIR_SRCS)/parsing/get_num.c\
+			$(DIR_SRCS)/parsing/get_composite.c\
+			$(DIR_SRCS)/.debug.c
 
 OBJS	:=	$(patsubst %.c, $(DIR_OBJS)/%.o, $(subst $(DIR_SRCS)/,,$(SRCS)))
 
