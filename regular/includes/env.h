@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 21:48:00 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:21:02 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,12 @@ typedef struct s_env
 }	t_env;
 
 bool	init_env(t_env *env, char *file_name);
+
+// DEBUG
+
+void	print_vector(t_vector *v, char *name, bool nl);
+void	print_color(t_color *c, char *name, bool nl);
+void	print_float(float n, char *name, bool nl);
+void	print_int(int n, char *name, bool nl);
 
 #endif
