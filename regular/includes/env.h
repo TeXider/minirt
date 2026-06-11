@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 20:21:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 21:04:48 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_alighting
 typedef struct s_light
 {
 	t_vector	o;
-	float		brightness;
+	float		intensity;
 }	t_light;
 
 typedef struct s_visual_env
