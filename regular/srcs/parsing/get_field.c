@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 21:09:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 22:46:39 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 13:58:20 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,44 @@ static bool	get_mantissa(float *dst, float range_min, float range_max,
 		t_parsing *p)
 {
 	float	mantissa;
+	float	dec;
 
-	if (p->file[p->buff_i] != '.')
+	if (p->line[p->line_i] != '.')
 		return (false);
-	mantissa = 0;
-	while (!p->parsing_over && p->file[p->buff_i] >= '0' && p->file[p->buff_i] <= '9')
+	p->line_i++;
+	dec = 0.1;
+	mantissa = 0.0;
+	while (p->line[p->line_i] >= '0' && p->line[p->line_i]<= '9')
 	{
-		mantissa = *dst * 10.0 + p->file[p->buff_i] - '0';
-		if (check_range(*dst, range_min, range_max, p)
-			|| move_in_buff(1, p))
-			return (true);
-		p->buff_i++;
+		mantissa += dec * (p->line[p->line_i] - '0');
+		dec /= 10.0;
+		p->line_i++;
 	}
+	*dst += mantissa * (-2.0 * (*dst < 0) + 1.0);
+	return (check_range(*dst, range_min, range_max, p));
 }
 
 bool	get_float(float *dst, float range_min, float range_max, t_parsing *p)
 {
 	bool	sgn;
-	int		start_i;
+	size_t	start_i;
 
-	sgn = (p->file[p->buff_i] == '-');
-	start_i = p->buff_i;
+	sgn = (p->line[p->line_i] == '-');
+	p->line_i += (sgn || p->line[p->line_i] == '+');
+	start_i = p->line_i;
 	*dst = 0;
-	while (!p->parsing_over && p->file[p->buff_i] >= '0' && p->file[p->buff_i] <= '9')
+	while (p->line[p->line_i] >= '0' && p->line_i <= '9')
 	{
-		*dst = *dst * 10.0 + p->file[p->buff_i++] - '0';
-		if (check_range(*dst * (-2.0 * sgn + 1.0), range_min, range_max, p)
-			|| move_in_buff(1, p))
+		*dst = *dst * 10.0 + p->line[p->line_i] - '0';
+		if (check_range(*dst * (-2.0 * sgn + 1.0), range_min, range_max, p))
 			return (true);
+		p->line_i++;
 	}
 	*dst *= -2.0 * sgn + 1.0;
 	if (!is_end_of_field(p) && get_mantissa(dst, range_min, range_max, p))
 		return (true);
-	if (start_i == p->buff_i || (!is_end_of_field(p)
-		&& !(p->file[p->buff_i] == ',' && p->comma_expected)))
+	if (start_i == p->line_i || (!is_end_of_field(p)
+		&& !(p->line[p->line_i] == ',' && p->comma_expected)))
 	{
 		p->parsing_err = INVALID_FIELD_ERR;
 		return (true);
