@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 12:57:50 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:09:30 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 
 # define SINGLETON_MASK	0b0011
 # define SHAPE_MASK		0b1100
+
+# define MIN	0
+# define MAX	1
 
 # define BUFF_SIZE	128
 
@@ -76,5 +79,11 @@ bool	parse_light(t_parsing *p, t_visual_env *v_env);
 bool	parse_plane(t_parsing *p, t_visual_env *v_env);
 bool	parse_sphere(t_parsing *p, t_visual_env *v_env);
 bool	parse_cylinder(t_parsing *p, t_visual_env *v_env);
+
+bool	get_float(float *dst, float range[2], bool comma_expected,
+		t_parsing *p);
+bool	get_int(int *dst, int range[2], bool comma_expected, t_parsing *p);
+bool	get_vector(t_vector *dst, float range[2], t_parsing *p);
+bool	get_color(t_color *dst, t_parsing *p);
 
 #endif
