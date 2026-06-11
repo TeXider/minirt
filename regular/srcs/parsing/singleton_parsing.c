@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 22:58:31 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:43:59 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 
 bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 {
-	// p->parsing_id = ALIGHT;
-	// if (v_env->has_alight)
-	// {
-	// 	p->parsing_err = MULTI_DEF_ERR;
-	// 	return (true);
-	// }
-	// if (go_to_next_field("intensity", p)
-	// 	|| get_float(&v_env->alight.intensity, 0.0, 1.0, p)
-	// 	|| go_to_next_field("color", p)
-	// 	|| get_color(&v_env->alight.color, p)
-	// 	|| check_end_of_obj(p))
-	// 	return (true);
-	// {
-	// 	p->parsing_err = EXTRA_FIELD_ERR;
-	// 	return (true);
-	// }
-	// v_env->has_alight = true;
-	// return (false);
-	(void) v_env;
-	printf("Alight mother fucker\n");
-	go_to_next_line(&p->file, p);
+	p->parsing_id = ALIGHT;
+	if (v_env->has_alight)
+	{
+		p->parsing_err = MULTI_DEF_ERR;
+		return (true);
+	}
+	if (go_to_next_field("intensity", p)
+		|| get_float(&v_env->alight.intensity, (float[2]){0.0, 1.0}, false, p)
+		|| go_to_next_field("color", p)
+		|| get_color(&v_env->alight.color, p)
+		|| check_end_of_obj(p))
+		return (true);
+	{
+		p->parsing_err = EXTRA_FIELD_ERR;
+		return (true);
+	}
+	v_env->has_alight = true;
 	return (false);
 }
 
