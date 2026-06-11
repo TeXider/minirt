@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 21:09:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 16:22:43 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:06:31 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ bool	get_float(float *dst, float range[2], bool comma_expected, t_parsing *p)
 		p->parsing_err = INVALID_FIELD_ERR;
 		return (true);
 	}
+	p->line_i += comma_expected;
 	return (false);
 }
 
@@ -96,5 +97,6 @@ bool	get_int(int *dst, int range[2], bool comma_expected, t_parsing *p)
 		return (true);
 	}
 	*dst *= (1 - 2 * sgn);
+	p->line_i += comma_expected;
 	return (false);
 }
