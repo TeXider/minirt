@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 13:08:16 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:12:55 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static bool	init_parsing(t_parsing *p, t_env *env)
 	p->comma_expected = false;
 	p->curr_field_name = NULL;
 	p->parsing_err = NO_PARSING_ERR;
+	p->eop = false;
 	p->env = env;
 	if (go_to_next_line(&p->file, p))
 	{
