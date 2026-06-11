@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:20:42 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 21:25:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 21:17:45 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ bool	init_env(t_env *env, char *file_name)
 		env->err = MALLOC_ERR;
 		return (true);
 	}
-	env->vis_env.planes_len = 0;
-	env->vis_env.spheres_len = 0;
-	env->vis_env.cylinders_len = 0;
+	env->vis_env.planes_count = 0;
+	env->vis_env.spheres_count = 0;
+	env->vis_env.cylinders_count = 0;
 	env->err = NO_ERR;
 	return (check_file_extension(file_name, env));
 }
