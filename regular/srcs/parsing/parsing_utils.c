@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 21:26:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 13:24:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:38:32 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ bool	go_to_next_obj(t_parsing *p)
 bool	go_to_next_field(char *field_name, t_parsing *p)
 {
 	p->curr_field_name = field_name;
+	while (p->line[p->line_i] && p->line[p->line_i] != ' ')
+		p->line_i++;
 	while (p->line[p->line_i] == ' ')
 		p->line_i++;
 	if (!p->line[p->line_i])
