@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 21:39:47 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 21:49:16 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ bool	parse_plane(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	if (go_to_next_field("origin", p)
 		|| get_vector(&v_env->planes[v_env->planes_count].o,
-			(float[2]){-1023.99996, 1023.99996}, p)
+			(float [2]){-1023.99996, 1023.99996}, p)
 		|| go_to_next_field("normal_vector", p)
 		|| get_vector(&v_env->planes[v_env->planes_count].n,
-			(float[2]){0.0, 1.0}, p)
+			(float [2]){0.0, 1.0}, p)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->planes[v_env->planes_count].color, p)
 		|| check_end_of_obj(p))
@@ -45,9 +45,9 @@ bool	parse_sphere(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	if (go_to_next_field("origin", p)
 		|| get_vector(&v_env->spheres[v_env->spheres_count].o,
-			(float[2]){-1023.99996, 1023.99996}, p)
+			(float [2]){-1023.99996, 1023.99996}, p)
 		|| go_to_next_field("diameter", p)
-		|| get_float(&d, (float[2]){-1023.99996, 1023.99996}, false, p)
+		|| get_float(&d, (float [2]){-1023.99996, 1023.99996}, false, p)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->spheres[v_env->spheres_count].color, p)
 		|| check_end_of_obj(p))
@@ -66,10 +66,10 @@ static bool	parse_cylinder_floats(t_parsing *p, t_visual_env *v_env)
 
 	if (go_to_next_field("diameter", p)
 		|| get_float(&d,
-			(float[2]){-1023.99996, 1023.99996}, false, p)
+			(float [2]){-1023.99996, 1023.99996}, false, p)
 		|| go_to_next_field("height", p)
 		|| get_float(&v_env->cylinders[v_env->cylinders_count].h,
-			(float[2]){-1023.99996, 1023.99996}, false, p))
+			(float [2]){-1023.99996, 1023.99996}, false, p))
 		return (true);
 	v_env->cylinders[v_env->cylinders_count].r = d / 2.0;
 	return (false);
@@ -83,10 +83,10 @@ bool	parse_cylinder(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	if (go_to_next_field("origin", p)
 		|| get_vector(&v_env->cylinders[v_env->cylinders_count].o,
-			(float[2]){-1023.99996, 1023.99996}, p)
+			(float [2]){-1023.99996, 1023.99996}, p)
 		|| go_to_next_field("normal_vector", p)
 		|| get_vector(&v_env->cylinders[v_env->cylinders_count].n,
-			(float[2]){0.0, 1.0}, p)
+			(float [2]){0.0, 1.0}, p)
 		|| parse_cylinder_floats(p, v_env)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->cylinders[v_env->cylinders_count].color, p)

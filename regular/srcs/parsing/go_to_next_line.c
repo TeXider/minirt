@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:00:17 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/08 23:05:48 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 21:48:30 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ static bool	alloc_curr_line(size_t *len, t_file *f, t_parsing *p)
 	return (0);
 }
 
+static bool	end_next_line(t_file *f, t_parsing *p)
+{
+	p->line[p->line_i] = '\0';
+	p->line_i = 0;
+	f->buff_i++;
+	return (f->buff_i == (size_t) f->read_len && refresh_buffer(f, p));
+}
+
 bool	go_to_next_line(t_file *f, t_parsing *p)
 {
 	size_t	line_len;
@@ -77,8 +85,5 @@ bool	go_to_next_line(t_file *f, t_parsing *p)
 				|| refresh_buffer(f, p)))
 			return (true);
 	}
-	p->line[p->line_i] = '\0';
-	p->line_i = 0;
-	f->buff_i++;
-	return (f->buff_i == (size_t) f->read_len && refresh_buffer(f, p));
+	return (end_next_line(f, p));
 }
