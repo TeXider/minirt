@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 21:09:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 15:54:00 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:07:52 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static bool	get_mantissa(float *dst, float range_min, float range_max,
 	p->line_i++;
 	dec = 0.1;
 	mantissa = 0.0;
-	while (p->line[p->line_i] >= '0' && p->line[p->line_i]<= '9')
+	while (p->line[p->line_i] >= '0' && p->line[p->line_i] <= '9')
 	{
 		mantissa += dec * (p->line[p->line_i] - '0');
 		dec /= 10.0;
 		p->line_i++;
 	}
-	*dst += mantissa * (-2.0 * ((*((int *)(dst)) & (1 << 31)) != 0) + 1.0);
+	*dst += mantissa * (1.0 - 2.0 * ((*((int *)(dst)) & (1 << 31)) != 0));
 	return (check_range(*dst, range_min, range_max, p));
 }
 
@@ -56,7 +56,7 @@ bool	get_float(float *dst, float range_min, float range_max, t_parsing *p)
 	while (p->line[p->line_i] >= '0' && p->line_i <= '9')
 	{
 		*dst = *dst * 10.0 + p->line[p->line_i] - '0';
-		if (check_range(*dst * (-2.0 * sgn + 1.0), range_min, range_max, p))
+		if (check_range(*dst * (1.0 - 2.0 * sgn), range_min, range_max, p))
 			return (true);
 		p->line_i++;
 	}
@@ -64,10 +64,39 @@ bool	get_float(float *dst, float range_min, float range_max, t_parsing *p)
 	if (!is_end_of_field(p) && get_mantissa(dst, range_min, range_max, p))
 		return (true);
 	if (start_i == p->line_i || (!is_end_of_field(p)
-		&& !(p->line[p->line_i] == ',' && p->comma_expected)))
+			&& !(p->line[p->line_i] == ',' && p->comma_expected)))
 	{
 		p->parsing_err = INVALID_FIELD_ERR;
 		return (true);
 	}
+	return (false);
+}
+
+bool	get_int(int *dst, int range_min, int range_max, t_parsing *p)
+{
+	bool	sgn;
+
+	sgn = (p->line[p->line_i] == '-');
+	p->line_i += (sgn || p->line[p->line_i] == '+');
+	if (is_end_of_field(p))
+	{
+		p->parsing_err = INVALID_FIELD_ERR;
+		return (true);
+	}
+	*dst = 0;
+	while (p->line[p->line_i] >= '0' && p->line_i <= '9')
+	{
+		*dst = *dst * 10 + p->line[p->line_i] - '0';
+		if (check_range(*dst * (1 - 2 * sgn), range_min, range_max, p))
+			return (true);
+		p->line_i++;
+	}
+	if (!is_end_of_field(p)
+		&& !(p->line[p->line_i] == ',' && p->comma_expected))
+	{
+		p->parsing_err = INVALID_FIELD_ERR;
+		return (true);
+	}
+	*dst * (1 - 2 * sgn);
 	return (false);
 }
