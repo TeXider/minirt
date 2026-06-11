@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/11 20:32:52 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 21:38:21 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef struct s_pol_coef
 	float	c;
 }	t_pol_coef;
 
-bool	extend_planes_len(t_visual_env *v_env);
-bool	extend_spheres_len(t_visual_env *v_env);
-bool	extend_cylinders_len(t_visual_env *v_env);
+bool	extend_planes_len(t_env *env);
+bool	extend_spheres_len(t_env *env);
+bool	extend_cylinders_len(t_env *env);
 
 void	safe_free(void **ptr);
 bool	challoc(char **dst, size_t len, t_env *env);
