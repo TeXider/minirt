@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 20:43:59 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:58:44 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->alight.color, p)
 		|| check_end_of_obj(p))
-		return (true);
 	{
-		p->parsing_err = EXTRA_FIELD_ERR;
+		p->parsing_err = INVALID_FIELD_ERR;
 		return (true);
 	}
 	v_env->has_alight = true;
