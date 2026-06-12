@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 21:17:45 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/12 14:13:41 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct s_env
 }	t_env;
 
 bool	init_env(t_env *env, char *file_name);
+
+bool	init_mlx(t_env *env);
+void	init_hooks(t_env *env);
 
 // DEBUG
 

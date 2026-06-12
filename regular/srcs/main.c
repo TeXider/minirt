@@ -6,11 +6,22 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 21:12:35 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/12 15:09:19 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/env.h"
+
+static void	clean_exit(t_env *env)
+{
+	free(env->vis_env.planes);
+	free(env->vis_env.spheres);
+	free(env->vis_env.cylinders);
+	mlx_destroy_image(env->mlx, env->img.img);
+	mlx_destroy_window(env->mlx, env->mlx_win);
+	mlx_destroy_display(env->mlx);
+	exit(env->err != NO_ERR);
+}
 
 static bool	check_args(int argc, char **argv, t_env *env)
 {
@@ -40,17 +51,14 @@ int	main(int argc, char **argv)
 		print_error(&env);
 		exit(1);
 	}
-	// if (init_env(&env, argv[1])
-	// 	|| parse_file(&env)
-	// 	|| init_mlx(&env))
-	// 	print_error(&env);
-	// else
-	// {
-	// 	init_hooks(&env);
-	// 	render_image(&env);
-	// 	mlx_loop(env.mlx);
-	// }
-	// clean_exit(&env);
-	init_env(&env, argv[1]);
-	parse_file(&env);
+	if (init_env(&env, argv[1])
+		|| parse_file(&env)
+		|| init_mlx(&env))
+		print_error(&env);
+	else
+	{
+		//render_image(&env);
+		mlx_loop(env.mlx);
+	}
+	clean_exit(&env);
 }

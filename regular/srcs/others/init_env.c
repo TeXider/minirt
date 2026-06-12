@@ -6,25 +6,11 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:20:42 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 21:45:42 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:25:28 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/env.h"
-
-bool	check_file_extension(char *file_name, t_env *env)
-{
-	int	i;
-
-	i = 0;
-	while (file_name[i])
-		i++;
-	if (i > 2 && file_name[i - 3] == '.' && file_name[i - 2] == 'r'
-		&& file_name[i - 1] == 't')
-		return (false);
-	env->err = INVALID_FILE_EXTENSION_ERR;
-	return (true);
-}
 
 bool	init_env(t_env *env, char *file_name)
 {
@@ -48,5 +34,5 @@ bool	init_env(t_env *env, char *file_name)
 	env->vis_env.spheres_count = 0;
 	env->vis_env.cylinders_count = 0;
 	env->err = NO_ERR;
-	return (check_file_extension(file_name, env));
+	return (false);
 }
