@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:47:34 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/19 11:56:39 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:14:57 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	render_image(t_env *env)
 		while (rt_screen.pix_x < WIN_X)
 		{
 			compute_cam_ray(&cam_ray, &rt_screen, &env->vis_env.cam);
-			ray_trace(&cam_ray, &pix_color, &env->vis_env);
+			//ray_trace(&cam_ray, &pix_color, &env->vis_env);
 			put_pixel_to_img(&env->img, rt_screen.pix_x, rt_screen.pix_y,
 				&pix_color);
 			rt_screen.pix_x++;

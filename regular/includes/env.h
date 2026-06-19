@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/19 12:10:39 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:15:33 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@
 // VISUAL ENV
 
 # define V_FOV	2.095f
-
-typedef struct s_rt_screen
-{
-	int			pix_x;
-	int			pix_y;
-	t_vector	v_sweep;
-	float		v_sweep_comp[2];
-	float		dv_sweep_rot[2];
-	float		init_h_sweep_comp[2];
-	float		h_sweep_comp[2];
-	float		dh_sweep_rot[2];
-}	t_rt_screen;
-
 
 typedef struct s_camera
 {
@@ -74,6 +61,20 @@ typedef struct s_visual_env
 	t_cylinder	*cylinders;
 	size_t		cylinders_count;
 }	t_visual_env;
+
+typedef struct s_rt_screen
+{
+	int			pix_x;
+	int			pix_y;
+	t_vector	v_sweep;
+	float		v_sweep_comp[2];
+	float		dv_sweep_rot[2];
+	float		init_h_sweep_comp[2];
+	float		h_sweep_comp[2];
+	float		dh_sweep_rot[2];
+}	t_rt_screen;
+
+void	compute_cam_ray(t_ray *dst, t_rt_screen *rt_s, t_camera *cam);
 
 // ENV
 

@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/19 11:27:11 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:16:25 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
 // bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
 // 				float *res);
 
-t_vector	sphere_surface_norm_vector(t_sphere *sphere, t_vector *point);
+t_vector	sphere_surface_norm_vector(t_sphere *sphere, t_vector point);
 t_vector	cylinder_surface_norm_vector(t_cylinder *cylinder, t_vector *point);
 
 typedef struct s_pol_coef

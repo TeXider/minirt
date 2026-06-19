@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/08 21:20:24 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:14:17 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 t_vector	point_on_ray(t_ray *r, float t)
 {
-	t_vector	tmp;
-
-	tmp = vector_scale(&r->n, t);
-	return (vector_add(&r->o, &tmp));
+	return (vector_add(r->o, vector_scale(r->n, t)));
 }
