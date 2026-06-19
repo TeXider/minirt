@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/08 21:20:16 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 11:52:09 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,31 @@
 
 bool	get_plane_intersection(t_plane *pl, t_ray *r, float *res)
 {
-	t_vector	tmp;
+	float	tmp;
 
-	if (!vector_dot_prod(&r->n, &pl->n))
+	tmp = vector_dot_prod(r->n, pl->n);
+	if (!tmp)
 		return (false);
-	tmp = vector_sub(&r->o, &pl->o);
-	*res = -vector_dot_prod(&pl->n, &tmp)
-		/ vector_dot_prod(&pl->n, &r->n);
+	*res = -vector_dot_prod(pl->n, vector_sub(r->o, pl->o)) / tmp;
 	return (true);
 }
 
 bool	get_sphere_intersection(t_sphere *sp, t_ray *r, float *res)
 {
-	t_vector	oo;
-	float		roo;
+	t_vector	o_diff;
+	t_pol_coef	pc;
 	float		d;
 
-	oo = vector_sub(&r->o, &sp->o);
-	roo = vector_dot_prod(&oo, &r->n);
-	d = 4 * roo * roo - 4 * (vector_square(&oo) - sp->r * sp->r);
+	o_diff = vector_sub(r->o, sp->o);
+	pc = (t_pol_coef){1, 2.0f * vector_dot_prod(r->n, o_diff),
+		vector_square(o_diff) - sp->r * sp->r};
+	d = pc.b * pc.b - 4.0f * pc.c;
 	if (d < 0)
 		return (false);
 	d = sqrt(d);
-	roo *= -2;
-	if (roo < -d)
+	if (-pc.b < -d)
 		return (false);
-	if (roo >= d && roo - d < roo + d)
-		*res = (roo - d) / 2;
-	else
-		*res = (roo + d) / 2;
+	*res = (-pc.b + d * ((-pc.b < d) - 2 * (-pc.b >= d))) / 2.0f;
 	return (true);
 }
 
