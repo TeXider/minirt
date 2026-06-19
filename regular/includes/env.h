@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/12 14:13:41 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:10:39 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,28 @@
 
 // VISUAL ENV
 
+# define V_FOV	2.095f
+
+typedef struct s_rt_screen
+{
+	int			pix_x;
+	int			pix_y;
+	t_vector	v_sweep;
+	float		v_sweep_comp[2];
+	float		dv_sweep_rot[2];
+	float		init_h_sweep_comp[2];
+	float		h_sweep_comp[2];
+	float		dh_sweep_rot[2];
+}	t_rt_screen;
+
+
 typedef struct s_camera
 {
 	t_vector	o;
 	t_vector	n;
 	int			h_fov;
+	t_vector	e_y;
+	t_vector	e_z;
 }	t_camera;
 
 typedef struct s_alighting
@@ -82,7 +99,7 @@ typedef struct s_env
 bool	init_env(t_env *env, char *file_name);
 
 bool	init_mlx(t_env *env);
-void	init_hooks(t_env *env);
+void	put_pixel_to_img(t_img *img, int x, int y, t_color *color);
 
 // DEBUG
 
