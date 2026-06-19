@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 18:25:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/12 15:18:51 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/13 14:58:34 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ bool	init_mlx(t_env *env)
 	env->img.addr = mlx_get_data_addr(env->img.img, &env->img.bits_per_pixel,
 			&env->img.line_length, &env->img.endian);
 	mlx_hook(env->mlx_win, 17, 0, destroy_hook, env->mlx);
-	mlx_hook(env->mlx_win, 2, (1L<<0), esc_hook, env->mlx);
+	mlx_hook(env->mlx_win, 2, 1, esc_hook, env->mlx);
 	return (false);
 }
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	put_pixel_to_img(t_img *img, int x, int y, t_color *color)
 {
 	char	*dst;
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dst = (color->r << 16) + (color->g << 8) + color->b;
 }
