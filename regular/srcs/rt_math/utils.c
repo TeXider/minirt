@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pol_coef.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 12:32:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 10:44:51 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:05:32 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ inline bool	solve_pol_coef(t_pol_coef *pc, float *res)
 inline t_vector	point_on_ray(t_ray *r, float t)
 {
 	return (vector_add(r->o, vector_scale(r->n, t)));
+}
+
+inline float	sign(float n)
+{
+	return (1 - 2 * (n < 0));
 }
