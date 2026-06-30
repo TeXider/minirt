@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/19 11:26:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:05:37 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
+
+t_color	scale_color(t_color c, float k);
+t_color	light_color(t_color color, t_color light);
+t_color	add_colors(t_color a, t_color b);
 
 bool	extend_planes_len(t_env *env);
 bool	extend_spheres_len(t_env *env);
