@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/19 12:16:25 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:06:06 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "others.h"
 
 # define PI 3.1415926f
+
+void	render_image(t_env *env);
 
 // VECTORS
 
@@ -43,7 +45,8 @@ typedef struct s_ray
 	t_vector	n;
 }	t_ray;
 
-t_vector	point_on_ray(t_ray *ray, float t);
+void		ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env);
+t_vector	point_on_ray(t_ray *r, float t);
 
 // SHAPES
 
@@ -70,14 +73,26 @@ typedef struct s_cylinder
 	t_color		color;
 }	t_cylinder;
 
-bool		get_plane_intersection(t_plane *plane, t_ray *ray, float *res);
-bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
-				float *res);
-// bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
-// 				float *res);
+# define TPLANE		'p'
+# define TSPHERE	's'
+# define TCYLINDER	'c'
 
-t_vector	sphere_surface_norm_vector(t_sphere *sphere, t_vector point);
-t_vector	cylinder_surface_norm_vector(t_cylinder *cylinder, t_vector *point);
+typedef struct s_intersection
+{
+	float		distance;
+	t_vector	p;
+	t_vector	surf_n;
+	void		*shape;
+	char		type;
+	t_color		color;
+}	t_intersection;
+
+bool		get_plane_intersection(t_plane *plane, t_ray *ray,
+				t_intersection *dst);
+bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
+				t_intersection *dst);
+bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
+				t_intersection *dst);
 
 typedef struct s_pol_coef
 {
@@ -85,5 +100,8 @@ typedef struct s_pol_coef
 	float	b;
 	float	c;
 }	t_pol_coef;
+
+bool	solve_pol_coef(t_pol_coef *pc, float *res);
+float	sign(float n);
 
 #endif
