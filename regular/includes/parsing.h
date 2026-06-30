@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:18:16 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 14:23:42 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # define MULTI_DEF_ERR			-5
 # define OUT_OF_RANGE_ERR		-6
 
-# define ALIGHT		0b0001
-# define CAM		0b0010
-# define LIGHT		0b0011
-# define PLANE		0b0100
-# define SPHERE		0b1000
-# define CYLINDER	0b1100
+# define ALIGHT		"ALIGHT"
+# define CAM		"CAMERA"
+# define LIGHT		"LIGHT"
+# define PLANE		"PLANE"
+# define SPHERE		"SPHERE"
+# define CYLINDER	"CYLINDER"
 
 # define SINGLETON_MASK	0b0011
 # define SHAPE_MASK		0b1100
@@ -59,7 +59,7 @@ typedef struct s_parsing
 	size_t	line_i;
 	size_t	line_count;
 	bool	comma_expected;
-	int		parsing_id;
+	char	*parsing_id;
 	bool	eop;
 	char	*curr_field_name;
 	size_t	curr_field_i;

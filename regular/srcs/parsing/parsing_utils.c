@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 21:26:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/11 20:38:32 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 12:33:20 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ bool	go_to_next_obj(t_parsing *p)
 		{
 			if (go_to_next_line(&p->file, p))
 				return (true);
+			p->line_count++;
 		}
 		else
 			p->line_i++;
