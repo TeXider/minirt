@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 10:21:18 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:18:44 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 		|| check_end_of_obj(p))
 		return (true);
 	v_env->has_alight = true;
-	v_env->alight.color = scale_color(v_env->alight.color, v_env->alight.intensity);
+	v_env->alight.color = scale_color(v_env->alight.color,
+			v_env->alight.intensity);
 	return (false);
 }
 
@@ -50,8 +51,8 @@ bool	parse_cam(t_parsing *p, t_visual_env *v_env)
 		|| check_end_of_obj(p))
 		return (true);
 	v_env->has_cam = true;
-	v_env->cam.h_fov = ((float) h_fov_int - 0.01f * (h_fov_int == 180)) * 3.1415926f
-		/ 180.0f;
+	v_env->cam.h_fov = ((float) h_fov_int - 0.01f * (h_fov_int == 180))
+		* 3.1415926f / 180.0f;
 	return (false);
 }
 

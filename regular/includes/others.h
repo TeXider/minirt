@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/30 11:05:37 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:20:36 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 # define OPEN_ERR					5 //"open() function error:" "Why do you look at me like its my fault?"
 # define READ_ERR					6 //"read() function error:" "Do you want me to fail that bad?"
 
-# define IS_PARSING_ERR	(1 << 31)
-
-typedef struct s_env	t_env;
+typedef struct s_env		t_env;
 typedef struct s_visual_env	t_visual_env;
 typedef struct s_parsing	t_parsing;
 

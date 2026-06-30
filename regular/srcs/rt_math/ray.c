@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/30 10:20:41 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:22:09 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ static t_color	compute_lighting(t_intersection *inter, t_ray *r,
 				inter->shape, v_env))
 			return (alight);
 		light = scale_color(inter->color, v_env->light.intensity
-			* fabs(vector_dot_prod(light_ray.n, inter->surf_n)));
+				* fabs(vector_dot_prod(light_ray.n, inter->surf_n)));
 	}
 	return (add_colors(alight, light));
 }
 
-/*/ (1.0f + vector_square(point_to_light) * 0.01f)*/
+// / (1.0f + vector_square(point_to_light) * 0.01f)
 
 void	ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env)
 {

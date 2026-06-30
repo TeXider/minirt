@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:06:06 by almighty         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:19:46 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define PI 3.1415926f
 
-void	render_image(t_env *env);
+void		render_image(t_env *env);
 
 // VECTORS
 
@@ -101,7 +101,7 @@ typedef struct s_pol_coef
 	float	c;
 }	t_pol_coef;
 
-bool	solve_pol_coef(t_pol_coef *pc, float *res);
-float	sign(float n);
+bool		solve_pol_coef(t_pol_coef *pc, float *res);
+float		sign(float n);
 
 #endif
