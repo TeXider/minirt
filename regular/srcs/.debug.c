@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   .debug.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 20:15:50 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:16:16 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 13:22:26 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,25 @@
 void	print_vector(t_vector *v, char *name, bool nl)
 {
 	printf("vector %s: %f %f %f  ", name, v->x, v->y, v->z);
-	if (nl)
-		write(1, "\n", 1);
+	write(1, "\n", nl);
 }
 
 void	print_color(t_color *c, char *name, bool nl)
 {
 	printf("color %s: %d %d %d  ", name, c->r, c->g, c->b);
-	if (nl)
-		write(1, "\n", 1);
+	write(1, "\n", nl);
 }
 
 void	print_float(float n, char *name, bool nl)
 {
 	printf("float %s: %f  ", name, n);
-	if (nl)
-		write(1, "\n", 1);
+	write(1, "\n", nl);
 }
 
 void	print_int(int n, char *name, bool nl)
 {
 	printf("int %s: %d  ", name, n);
-	if (nl)
-		write(1, "\n", 1);
+	write(1, "\n", nl);
 }
 
 // static void	init_sweep_vals(t_rt_screen *rt_s, t_camera *cam)
