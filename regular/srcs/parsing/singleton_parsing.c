@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   singleton_parsing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:18:44 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 12:35:03 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "../../includes/parsing.h"
 
 bool	parse_alight(t_parsing *p, t_visual_env *v_env)
@@ -43,7 +44,7 @@ bool	parse_cam(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	}
 	if (go_to_next_field("position", p)
-		|| get_vector(&v_env->cam.o, (float [2]){-1023.99996, 1023.99996}, p)
+		|| get_vector(&v_env->cam.o, (float [2]){-INFINITY, INFINITY}, p)
 		|| go_to_next_field("normal_vector", p)
 		|| get_vector(&v_env->cam.n, (float [2]){-1.0, 1.0}, p)
 		|| go_to_next_field("horizontal_fov", p)
@@ -67,7 +68,7 @@ bool	parse_light(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	}
 	if (go_to_next_field("position", p)
-		|| get_vector(&v_env->light.o, (float [2]){-1023.99996, 1023.99996}, p)
+		|| get_vector(&v_env->light.o, (float [2]){-INFINITY, INFINITY}, p)
 		|| go_to_next_field("intensity", p)
 		|| get_float(&v_env->light.intensity, (float [2]){0.0, 1.0}, false, p)
 		|| go_to_next_field("color", p)
