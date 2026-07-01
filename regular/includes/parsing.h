@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 14:23:42 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 13:20:48 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@
 # define PLANE		"PLANE"
 # define SPHERE		"SPHERE"
 # define CYLINDER	"CYLINDER"
-
-# define SINGLETON_MASK	0b0011
-# define SHAPE_MASK		0b1100
 
 # define MIN	0
 # define MAX	1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/30 11:20:36 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 13:18:47 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include "parsing.h"
 
 # define NO_ERR						0
-# define INVALID_ARG_COUNT_ERR		1 //"./minirt : Invalid number of arguments" "Usage: ./minirt [rt_scene_path] (File must end with .rt)"
-# define MLX_INIT_ERR				2 //"MinilibX failed to initiate" "Oh... well... there's nothing we can do"
-# define INVALID_FILE_EXTENSION_ERR	3 //"Invalid file extension" "Add ".rt" at to the end of the file name"
-# define MALLOC_ERR					4 //"Fatal malloc() function error:" "*chuckles* I'm in danger"
-# define OPEN_ERR					5 //"open() function error:" "Why do you look at me like its my fault?"
-# define READ_ERR					6 //"read() function error:" "Do you want me to fail that bad?"
+# define INVALID_ARG_COUNT_ERR		1
+# define MLX_INIT_ERR				2
+# define INVALID_FILE_EXTENSION_ERR	3
+# define MALLOC_ERR					4
+# define OPEN_ERR					5
+# define READ_ERR					6
 
 typedef struct s_env		t_env;
 typedef struct s_visual_env	t_visual_env;
@@ -47,9 +47,6 @@ bool	extend_cylinders_len(t_env *env);
 void	safe_free(void **ptr);
 bool	challoc(char **dst, size_t len, t_env *env);
 
-void	print_parsing_error(t_parsing *p);
-void	print_error(t_env *env);
-
 /*GET_NEXT_LINE*/
 
 typedef struct s_buffer
@@ -58,5 +55,15 @@ typedef struct s_buffer
 	ssize_t	len;
 	ssize_t	index;
 }	t_buffer;
+
+/* Error handling */
+
+void	print_error(t_env *env);
+void	print_parsing_error(t_parsing *p);
+void	print_declaration_hint(char parsing_id);
+void	print_extra_field_error(t_parsing *p);
+void	print_out_of_range_error(t_parsing *p);
+void	print_invalid_field_error(t_parsing *p);
+void	print_unknown_element_error(t_parsing *p);
 
 #endif
