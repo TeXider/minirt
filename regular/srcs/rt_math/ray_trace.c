@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/30 11:22:09 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 14:10:04 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static t_color	compute_lighting(t_intersection *inter, t_ray *r,
 	t_vector	point_to_light;
 	t_color		alight;
 	t_color		light;
+	float		dot;
 
 	alight = (t_color){0, 0, 0};
 	light = (t_color){0, 0, 0};
@@ -83,13 +84,12 @@ static t_color	compute_lighting(t_intersection *inter, t_ray *r,
 		light_ray.o = inter->p;
 		point_to_light = vector_sub(v_env->light.o, light_ray.o);
 		light_ray.n = vector_normalize(point_to_light);
-		if (sign(vector_dot_prod(r->n, inter->surf_n))
-			== sign(vector_dot_prod(light_ray.n, inter->surf_n))
+		dot = vector_dot_prod(light_ray.n, inter->surf_n);
+		if (sign(vector_dot_prod(r->n, inter->surf_n)) == sign(dot)
 			|| is_in_shadow(&light_ray, vector_norm(point_to_light),
 				inter->shape, v_env))
 			return (alight);
-		light = scale_color(inter->color, v_env->light.intensity
-				* fabs(vector_dot_prod(light_ray.n, inter->surf_n)));
+		light = scale_color(inter->color, v_env->light.intensity * fabs(dot));
 	}
 	return (add_colors(alight, light));
 }

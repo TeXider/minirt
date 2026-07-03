@@ -3,26 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: almighty <almighty@student.42.fr>          +#+  +:+       +#+         #
+#    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/06/30 14:06:25 by almighty         ###   ########.fr        #
+#    Updated: 2026/07/03 17:52:42 by tpanou-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 CC = cc
-CCFLAGS = -Wall -Wextra -Wno-incompatible-pointer-types -g -O3
+CCFLAGS = -Wall -Wextra -Werror -g -O3
 MLX = libmlx.a
 MLX_DIR = mlx_linux
 
 
-DIR_SRCS	:= regular/srcs
-DIR_OBJS	:= regular/objs
+DIR_SRCS	:= bonus/srcs
+DIR_OBJS	:= bonus/objs
 
 SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/others/colors.c\
-			$(DIR_SRCS)/others/error_handling.c\
 			$(DIR_SRCS)/others/init_env.c\
 			$(DIR_SRCS)/others/mlx_funcs.c\
 			$(DIR_SRCS)/others/memory.c\
@@ -35,11 +34,15 @@ SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/parsing/get_num.c\
 			$(DIR_SRCS)/parsing/get_composite.c\
 			$(DIR_SRCS)/rt_math/get_intersection.c\
-			$(DIR_SRCS)/rt_math/ray.c\
+			$(DIR_SRCS)/rt_math/ray_trace.c\
 			$(DIR_SRCS)/rt_math/render_image.c\
 			$(DIR_SRCS)/rt_math/utils.c\
 			$(DIR_SRCS)/rt_math/vector.c\
 			$(DIR_SRCS)/rt_math/vector2.c\
+			$(DIR_SRCS)/err_handling/env_err.c\
+			$(DIR_SRCS)/err_handling/parsing_err.c\
+			$(DIR_SRCS)/err_handling/parsing_err2.c\
+			$(DIR_SRCS)/err_handling/parsing_hints.c\
 			$(DIR_SRCS)/.debug.c
 
 OBJS	:=	$(patsubst %.c, $(DIR_OBJS)/%.o, $(subst $(DIR_SRCS)/,,$(SRCS)))

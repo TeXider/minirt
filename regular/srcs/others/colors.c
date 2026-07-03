@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:58:32 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 10:22:03 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/01 16:28:44 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_color	scale_color(t_color c, float k)
 {
 	float	tmp;
 
+	if (!k || k < 0)
+		return ((t_color){0, 0, 0});
 	if (c.r)
 	{
 		tmp = 255.0f / (float) c.r;
@@ -34,10 +36,7 @@ t_color	scale_color(t_color c, float k)
 		if (tmp < k)
 			k = tmp;
 	}
-	c.r *= k;
-	c.g *= k;
-	c.b *= k;
-	return (c);
+	return ((t_color){c.r * k, c.g * k, c.b * k});
 }
 
 t_color	light_color(t_color color, t_color light)
