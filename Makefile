@@ -6,7 +6,7 @@
 #    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/07/03 17:52:42 by tpanou-d         ###   ########.fr        #
+#    Updated: 2026/07/04 09:29:09 by tpanou-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ MLX = libmlx.a
 MLX_DIR = mlx_linux
 
 
-DIR_SRCS	:= bonus/srcs
-DIR_OBJS	:= bonus/objs
+DIR_SRCS	:= regular/srcs
+DIR_OBJS	:= regular/objs
 
 SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/others/colors.c\
