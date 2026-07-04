@@ -6,12 +6,25 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/04 09:02:32 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/04 11:46:23 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "../../includes/env.h"
+
+static t_color	compute_spec(t_ray *r, t_ray *l_r, t_light *l,
+	t_intersection *i)
+{
+	float	reflection_amount;
+
+	reflection_amount = fmaxf(0.0f, vector_dot_prod(r->n, vector_sub(l_r->n,
+					vector_scale(i->surf_n,
+						2.0f * vector_dot_prod(i->surf_n, l_r->n)))));
+	return (scale_color(l->color,
+			0.02f * l->intensity * l->intensity * reflection_amount
+			/ (1.0f + 0.02f * l->intensity - reflection_amount)));
+}
 
 static t_intersection	find_shape_intersection(t_ray *r, t_visual_env *v_env)
 {
@@ -80,11 +93,10 @@ static t_color	compute_lighting(t_light *light, t_ray *r,
 	if (sign(vector_dot_prod(r->n, inter->surf_n)) == sign(dot)
 		|| is_in_shadow(&light_ray, vector_norm(point_to_light),
 			inter->shape, v_env))
-		return ((t_color){0,0,0});
-	t_color c  = scale_color(light_color(inter->color, light->color), light->intensity * fabs(dot));
-	float	bruh = fmaxf(0.0f, vector_dot_prod(vector_scale(r->n, -1), vector_add(vector_scale(inter->surf_n, 2.0f * vector_dot_prod(inter->surf_n, light_ray.n)), vector_scale(light_ray.n, -1))));
-	float	spec_i = 0.02f * light->intensity * bruh / (1.0f + 0.02f * light->intensity - bruh);
-	return (add_colors(scale_color(light->color, spec_i * light->intensity), c));
+		return ((t_color){0, 0, 0});
+	return (add_colors(compute_spec(r, &light_ray, light, inter),
+			scale_color(light_color(inter->color, light->color),
+				light->intensity * fabs(dot))));
 }
 
 // / (1.0f + vector_square(point_to_light) * 0.01f)
