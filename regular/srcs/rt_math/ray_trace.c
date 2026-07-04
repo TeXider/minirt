@@ -6,7 +6,7 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/01 14:10:04 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/04 09:18:57 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,22 @@ static t_color	compute_lighting(t_intersection *inter, t_ray *r,
 {
 	t_ray		light_ray;
 	t_vector	point_to_light;
-	t_color		alight;
-	t_color		light;
+	float		ptl_norm;
 	float		dot;
 
-	alight = (t_color){0, 0, 0};
-	light = (t_color){0, 0, 0};
-	if (v_env->has_alight)
-		alight = light_color(inter->color, v_env->alight.color);
 	if (v_env->has_light)
 	{
 		light_ray.o = inter->p;
 		point_to_light = vector_sub(v_env->light.o, light_ray.o);
-		light_ray.n = vector_normalize(point_to_light);
+		ptl_norm = vector_norm(point_to_light);
+		light_ray.n = vector_scale(point_to_light, 1.0f / ptl_norm);
 		dot = vector_dot_prod(light_ray.n, inter->surf_n);
-		if (sign(vector_dot_prod(r->n, inter->surf_n)) == sign(dot)
-			|| is_in_shadow(&light_ray, vector_norm(point_to_light),
-				inter->shape, v_env))
-			return (alight);
-		light = scale_color(inter->color, v_env->light.intensity * fabs(dot));
+		if (sign(vector_dot_prod(r->n, inter->surf_n)) != sign(dot)
+			&& !is_in_shadow(&light_ray, ptl_norm, inter->shape, v_env))
+			return (scale_color(inter->color, v_env->light.intensity
+					* fabs(dot)));
 	}
-	return (add_colors(alight, light));
+	return ((t_color){0, 0, 0});
 }
 
 // / (1.0f + vector_square(point_to_light) * 0.01f)
@@ -104,5 +99,6 @@ void	ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env)
 	if (!inter.shape)
 		*dst_color = (t_color){0, 0, 0};
 	else
-		*dst_color = compute_lighting(&inter, r, v_env);
+		*dst_color = add_colors(light_color(inter.color, v_env->alight.color),
+				compute_lighting(&inter, r, v_env));
 }
