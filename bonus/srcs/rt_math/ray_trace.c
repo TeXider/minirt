@@ -6,7 +6,7 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/04 11:46:23 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/04 13:05:42 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,17 @@ static t_color	compute_lighting(t_light *light, t_ray *r,
 void	ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env)
 {
 	t_intersection	inter;
-	t_color			lighting_color;
 	size_t			i;
 
+	*dst_color = (t_color){0, 0, 0};
 	inter = find_shape_intersection(r, v_env);
-	if (!inter.shape)
-		*dst_color = (t_color){0, 0, 0};
-	else
+	if (inter.shape)
 	{
-		lighting_color = (t_color){0, 0, 0};
 		i = -1;
 		while (++i < v_env->lights_count)
-			lighting_color = add_colors(lighting_color,
-					compute_lighting(&v_env->lights[i],
-						r, &inter, v_env));
+			*dst_color = add_colors(compute_lighting(&v_env->lights[i], r,
+						&inter, v_env), *dst_color);
 		*dst_color = add_colors(light_color(inter.color, v_env->alight.color),
-				lighting_color);
+				*dst_color);
 	}
 }
