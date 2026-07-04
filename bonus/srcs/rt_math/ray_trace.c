@@ -6,7 +6,7 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/03 18:01:47 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/04 09:02:32 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static t_color	compute_lighting(t_light *light, t_ray *r,
 		return ((t_color){0,0,0});
 	t_color c  = scale_color(light_color(inter->color, light->color), light->intensity * fabs(dot));
 	float	bruh = fmaxf(0.0f, vector_dot_prod(vector_scale(r->n, -1), vector_add(vector_scale(inter->surf_n, 2.0f * vector_dot_prod(inter->surf_n, light_ray.n)), vector_scale(light_ray.n, -1))));
-	float	spec_i = 0.02f * bruh / (1.0f + 0.02f - bruh);
-	return (add_colors(scale_color((t_color){255,255,255}, spec_i * 0.5f), c));
+	float	spec_i = 0.02f * light->intensity * bruh / (1.0f + 0.02f * light->intensity - bruh);
+	return (add_colors(scale_color(light->color, spec_i * light->intensity), c));
 }
 
 // / (1.0f + vector_square(point_to_light) * 0.01f)
