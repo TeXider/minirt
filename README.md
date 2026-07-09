@@ -173,12 +173,38 @@ E.g. : C 0,0,0 (...)  aa:3;sky:skybox.xpm;res:1920,1080
 ```
 - check:<number of squares>[0;100] -> default 0
 - txt:</path/to/texture.xpm> -> default none
-- bump:<WIN_X, WIN_Y>[0;2000] -> default 1280x720
+- bump:<WIN_X, WIN_Y>[0;2000] -> default none
 
 E.g. :  (...)  check:10;txt:txt.xpm;bump:bump.xpm 
 ```
 
-**NOTE** : For **Plane**, `check:<numbers of squares>[0;100]` becomes ```check:<squares size>[0.0;∞]```represents the size of the square with respect to the unit vector and not the number of squares. The bump/textures applied to **Plane** will be mapped on its checkboard pattern.
+**NOTE** : For **Plane**, `check:<numbers of squares>[0;100]` becomes ```check:<squares size>[0.0;∞]```, representing the size of the squares with respect to the unit vector and not the number of squares. The bump/textures applied to **Plane** will be mapped on its checkboard pattern.
+
+### Example
+
+The following `.rt` scene :
+
+```
+A 0.3    255,255,255
+C 0,20,-10   0,0,1   100 res:1920,1080
+
+L -50,100,0  0.7    255,250,240
+
+pl 0,0,100   0,0,1   255,255,255
+pl 0,-10,0   0,1,0   80,20,60 check:10
+
+sp -35,-5,60  12   0,255,22 txt:imgs/SoftballColor.xpm;bump:imgs/SoftballBump.xpm
+sp -20,-5,50  12   0,255,22 txt:imgs/NewTennisBallColor.xpm;bump:imgs/TennisBallBump.xpm
+
+sp 0,-5,50      12    0,255,22 txt:imgs/Ball4.xpm
+sp 10,-5,45  12   0,255,22  txt:imgs/Ball2.xpm
+
+cy 30,0,40         0,-1,0  1.5 40   255,0,0   check:5
+```
+
+Should render this :
+
+![preview](scenes/previews/test_bonus.png)
 
 ## Resources
 
