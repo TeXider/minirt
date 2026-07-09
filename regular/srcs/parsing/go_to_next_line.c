@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   go_to_next_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:00:17 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/11 21:48:30 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:44:02 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+#include "../../includes/env.h"
 
 bool	refresh_buffer(t_file *f, t_parsing *p)
 {

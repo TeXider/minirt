@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 13:07:15 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:47:22 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ bool	check_option(char *opt_name, t_parsing *p);
 void	parse_cam_res(t_camera *cam, t_parsing *p);
 bool	parse_txt(t_img *dst, t_parsing *p);
 
-void	init_plane_vals(t_plane *pl, void *mlx_ptr);
-void	init_sphere_vals(t_sphere *sp, void *mlx_ptr);
+void	init_plane_vals(t_plane *pl);
+void	init_sphere_vals(t_sphere *sp);
 void	init_cylinder_vals(t_cylinder *cy);
 void	init_cone_vals(t_cone *co);
 

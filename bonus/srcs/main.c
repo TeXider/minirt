@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 12:30:46 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:40:40 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	clean_exit(t_env *env)
 		mlx_destroy_window(env->mlx, env->mlx_win);
 	if (env->mlx)
 		mlx_destroy_display(env->mlx);
+	free(env->mlx);
 	exit(env->err != NO_ERR);
 }
 

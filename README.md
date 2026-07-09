@@ -178,6 +178,8 @@ E.g. : C 0,0,0 (...)  aa:3;sky:skybox.xpm;res:1920,1080
 E.g. :  (...)  check:10;txt:txt.xpm;bump:bump.xpm 
 ```
 
+**NOTE** : For **Plane**, `check:<numbers of squares>[0;100]` becomes ```check:<squares size>[0.0;∞]```represents the size of the square with respect to the unit vector and not the number of squares. The bump/textures applied to **Plane** will be mapped on its checkboard pattern.
+
 ## Resources
 
 Classic references used to understand the theory and techniques behind the

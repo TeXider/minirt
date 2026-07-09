@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 13:59:52 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:47:41 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	parse_plane(t_parsing *p, t_visual_env *v_env)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->planes[v_env->planes_count].color, p))
 		return (true);
-	init_plane_vals(&v_env->planes[v_env->planes_count], v_env->env->mlx);
+	init_plane_vals(&v_env->planes[v_env->planes_count]);
 	v_env->planes_count++;
 	return (check_pl_options(&v_env->planes[v_env->planes_count - 1], p)
 		|| check_end_of_obj(p));
@@ -49,7 +49,7 @@ bool	parse_sphere(t_parsing *p, t_visual_env *v_env)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->spheres[v_env->spheres_count].color, p))
 		return (true);
-	init_sphere_vals(&v_env->spheres[v_env->spheres_count], v_env->env->mlx);
+	init_sphere_vals(&v_env->spheres[v_env->spheres_count]);
 	v_env->spheres_count++;
 	return (check_sp_options(&v_env->spheres[v_env->spheres_count - 1], p)
 		|| check_end_of_obj(p));

@@ -6,11 +6,12 @@
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/01 12:51:42 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:45:31 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include "../../includes/env.h"
 #include "../../includes/parsing.h"
 
 bool	parse_plane(t_parsing *p, t_visual_env *v_env)

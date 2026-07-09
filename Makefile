@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: almighty <almighty@student.42.fr>          +#+  +:+       +#+         #
+#    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/07/09 14:26:11 by almighty         ###   ########.fr        #
+#    Updated: 2026/07/09 17:46:19 by tpanou-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 CC = cc
-CCFLAGS = -Wall -Wextra -g -O3 -Wno-incompatible-pointer-types
+CCFLAGS = -Wall -Wextra -Werror -g -O3
 MLX = libmlx.a
 MLX_DIR = mlx_linux
 

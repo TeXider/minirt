@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_shape_vals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 10:50:50 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 14:00:24 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:47:11 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "../../includes/parsing.h"
 
-void	init_plane_vals(t_plane *pl, void *mlx_ptr)
+void	init_plane_vals(t_plane *pl)
 {
 	pl->n = vector_normalize(pl->n);
 	compute_basis(pl->n, &pl->e_y, &pl->e_z);
@@ -22,7 +22,7 @@ void	init_plane_vals(t_plane *pl, void *mlx_ptr)
 	pl->bump.img = NULL;
 }
 
-void	init_sphere_vals(t_sphere *sp, void *mlx_ptr)
+void	init_sphere_vals(t_sphere *sp)
 {
 	sp->r /= 2.0f;
 	sp->check = 0;
