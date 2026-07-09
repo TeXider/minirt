@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/01 13:18:47 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:07:12 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "parsing.h"
 
 # define NO_ERR						0
 # define INVALID_ARG_COUNT_ERR		1

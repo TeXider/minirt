@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 22:15:56 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:50:34 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:54:39 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	set_cylinder_inter_vals(t_cylinder *cy, t_ray *r, t_intersection *dst)
 		dst->x_img_comp += 2.0f * PI;
 	dst->x_img_comp /= 2 * PI;
 	dst->y_img_comp = (cy->h + vector_dot_prod(po, cy->n) + cy->r) / (2 * cy->r
-			+ cy->h);
+			+ 2 * cy->h);
 	dst->color = point_color(cy->check, &cy->txt, cy->color, dst);
 	dst->surf_n = cylinder_surf_n(cy, dst);
 }

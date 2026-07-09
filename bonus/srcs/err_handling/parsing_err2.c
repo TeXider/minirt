@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:58:31 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/08 11:35:49 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:06:54 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static int	field_len(char *str)
 void	print_extra_field_error(t_parsing *p)
 {
 	printf("\e[1m↳ Extra field '\e[0m%.*s\e[1m' for \e[3m%s\e[23m"
-		"on line %zu\e[0m\n\n",
-		field_len(p->line + p->curr_field_i), p->line + p->curr_field_i,
+		" on line %zu\e[0m\n\n",
+		field_len(p->line + p->line_i), p->line + p->line_i,
 		p->parsing_id, p->line_count + 1);
-	print_declaration_hint(p->parsing_id[0]);
+	print_declaration_hint(p->parsing_id);
 }
 
 void	print_out_of_range_error(t_parsing *p)
@@ -38,17 +38,17 @@ void	print_out_of_range_error(t_parsing *p)
 		field_len(p->line + p->curr_field_i),
 		p->line + p->curr_field_i, p->parsing_id,
 		p->line_count + 1);
-	print_declaration_hint(p->parsing_id[0]);
+	print_declaration_hint(p->parsing_id);
 }
 
 void	print_invalid_field_error(t_parsing *p)
 {
 	printf("\e[1m↳ Invalid field \e[3m<%s>\e[23m (\e[0m%.*s\e[1m)"
-		" for %s on line %zu\n\n\e[0m",
+		" for \e[3m%s\e[23m on line %zu\n\n\e[0m",
 		p->curr_field_name, field_len(p->line + p->curr_field_i),
 		p->line + p->curr_field_i, p->parsing_id,
 		p->line_count + 1);
-	print_declaration_hint(p->parsing_id[0]);
+	print_declaration_hint(p->parsing_id);
 }
 
 void	print_unknown_element_error(t_parsing *p)

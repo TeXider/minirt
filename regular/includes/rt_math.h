@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:19:46 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:17:02 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ bool		get_plane_intersection(t_plane *plane, t_ray *ray,
 bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
 				t_intersection *dst);
 bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
+				t_intersection *dst);
+bool		get_cylinder_top_intersection(t_cylinder *cylinder, t_ray *ray,
 				t_intersection *dst);
 
 typedef struct s_pol_coef

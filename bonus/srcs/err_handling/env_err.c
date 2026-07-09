@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_err.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:59:52 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/04 09:40:41 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:48:55 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 
 static void	print_io_err(t_env *env)
 {
-	if (env->err == OPEN_ERR)
+	if (env->err == MLX_XPM_ERR)
+	{
+		printf("MiniLibX failed to open XPM file\n\n"
+			"ⓘ\e[0m    Make sure the file name is correct\e[0m\n\n");
+	}
+	else if (env->err == OPEN_ERR)
 	{
 		printf("open() function error: \e[0m%s\n\n\e[1mⓘ\e[0m    Make sure the "
 			"file name and permissions are correct\n\n", strerror(errno));

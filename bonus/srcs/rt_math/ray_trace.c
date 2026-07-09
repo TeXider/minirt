@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 02:04:04 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 04:03:32 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,6 @@ void	ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env)
 		*dst_color = add_colors(light_color(inter.color, v_env->alight.color),
 				*dst_color);
 	}
+	else if (v_env->sky_box.img)
+		*dst_color = sky_box_color(r, &v_env->sky_box);
 }

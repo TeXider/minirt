@@ -6,22 +6,70 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/08 19:01:59 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:30:46 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/env.h"
 #include "../includes/parsing.h"
 
+static void	destroy_shapes_imgs2(t_visual_env *v_env)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < v_env->cylinders_count)
+	{
+		if (v_env->cylinders[i].bump.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->cylinders[i].bump.img);
+		if (v_env->cylinders[i].txt.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->cylinders[i].txt.img);
+	}
+	i = -1;
+	while (++i < v_env->cones_count)
+	{
+		if (v_env->cones[i].bump.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->cones[i].bump.img);
+		if (v_env->cones[i].txt.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->cones[i].txt.img);
+	}
+}
+
+static void	destroy_shapes_imgs(t_visual_env *v_env)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < v_env->planes_count)
+	{
+		if (v_env->planes[i].bump.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->planes[i].bump.img);
+		if (v_env->planes[i].txt.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->planes[i].txt.img);
+	}
+	i = -1;
+	while (++i < v_env->spheres_count)
+	{
+		if (v_env->spheres[i].bump.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->spheres[i].bump.img);
+		if (v_env->spheres[i].txt.img)
+			mlx_destroy_image(v_env->env->mlx, v_env->spheres[i].txt.img);
+	}
+	destroy_shapes_imgs2(v_env);
+}
+
 static void	clean_exit(t_env *env)
 {
 	free(env->vis_env.lights);
+	destroy_shapes_imgs(&env->vis_env);
 	free(env->vis_env.planes);
 	free(env->vis_env.spheres);
 	free(env->vis_env.cylinders);
 	free(env->vis_env.cones);
 	if (env->img.img)
 		mlx_destroy_image(env->mlx, env->img.img);
+	if (env->vis_env.sky_box.img)
+		mlx_destroy_image(env->mlx, env->vis_env.sky_box.img);
 	if (env->mlx_win)
 		mlx_destroy_window(env->mlx, env->mlx_win);
 	if (env->mlx)
@@ -58,14 +106,15 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	if (init_env(&env, argv[1])
-		|| init_mlx(&env)
-		|| parse_file(&env))
+		|| parse_file(&env)
+		|| init_mlx(&env))
 		print_error(&env);
 	else
 	{
+		printf("Rendering...\n");
 		render_image(&env);
-		put_pixel_to_img(&env.img, 640, 360, &(t_color){0, 0, 255});
 		mlx_put_image_to_window(env.mlx, env.mlx_win, env.img.img, 0, 0);
+		printf("Rendering over\n");
 		mlx_loop(env.mlx);
 	}
 	clean_exit(&env);

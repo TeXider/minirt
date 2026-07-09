@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:34:26 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:28:42 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 		return (true);
 	}
 	if (go_to_next_field("intensity", p)
-		|| get_float(&v_env->alight.intensity, (float [2]){0.0, 1.0}, false, p)
+		|| get_float(&v_env->alight.intensity, (float [2]){0.0, 1.0}, '\0', p)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->alight.color, p)
 		|| check_end_of_obj(p))
@@ -48,14 +48,17 @@ bool	parse_cam(t_parsing *p, t_visual_env *v_env)
 		|| go_to_next_field("normal_vector", p)
 		|| get_vector(&v_env->cam.n, (float [2]){-1.0, 1.0}, p)
 		|| go_to_next_field("horizontal_fov", p)
-		|| get_int(&h_fov_int, (int [2]){0, 180}, false, p)
-		|| check_end_of_obj(p))
+		|| get_int(&h_fov_int, (int [2]){0, 180}, '\0', p))
 		return (true);
 	v_env->has_cam = true;
 	v_env->cam.h_fov = ((float) h_fov_int - 0.001f * (h_fov_int == 180))
 		* 3.1415926f / 180.0f;
 	v_env->cam.n = vector_normalize(v_env->cam.n);
-	return (false);
+	compute_basis(v_env->cam.n, &v_env->cam.e_y, &v_env->cam.e_z);
+	v_env->cam.r_x = 1280;
+	v_env->cam.r_y = 720;
+	return (check_cam_options(&v_env->cam, v_env, p)
+		|| check_end_of_obj(p));
 }
 
 bool	parse_light(t_parsing *p, t_visual_env *v_env)
@@ -69,7 +72,7 @@ bool	parse_light(t_parsing *p, t_visual_env *v_env)
 			(float [2]){-INFINITY, INFINITY}, p)
 		|| go_to_next_field("intensity", p)
 		|| get_float(&v_env->lights[v_env->lights_count].intensity,
-			(float [2]){0.0, 1.0}, false, p)
+			(float [2]){0.0, 1.0}, '\0', p)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->lights[v_env->lights_count].color, p)
 		|| check_end_of_obj(p))

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_err.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:55:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/01 13:04:17 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:09:31 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
+#include "../../includes/parsing.h"
+#include "../../includes/others.h"
 
 static void	print_multi_def_error(t_parsing *p)
 {

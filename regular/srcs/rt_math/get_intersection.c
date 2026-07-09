@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/30 10:48:57 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:08:14 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,6 @@ static inline t_vector	cylinder_surf_n(t_intersection *inter, t_cylinder *cy)
 						vector_sub(inter->p, cy->o))))));
 }
 
-static inline bool	get_cylinder_top_intersection(t_cylinder *cy, t_ray *r,
-	t_intersection *dst)
-{
-	t_vector	top_o;
-	float		n_dot_r;
-	t_vector	p;
-
-	n_dot_r = vector_dot_prod(r->n, cy->n);
-	if (!n_dot_r)
-		return (false);
-	top_o = vector_add(cy->o, vector_scale(cy->n, -sign(n_dot_r) * cy->h));
-	dst->distance = -vector_dot_prod(cy->n, vector_sub(r->o, top_o)) / n_dot_r;
-	if (dst->distance < 0)
-		return (false);
-	p = vector_add(vector_scale(r->n, dst->distance), r->o);
-	if (vector_square(vector_sub(p, top_o)) <= cy->r * cy->r)
-	{
-		dst->type = TCYLINDER;
-		dst->shape = cy;
-		dst->p = vector_add(r->o, vector_scale(r->n, dst->distance));
-		dst->surf_n = cy->n;
-		dst->color = cy->color;
-		return (true);
-	}
-	return (false);
-}
-
 bool	get_cylinder_intersection(t_cylinder *cy, t_ray *r, t_intersection *dst)
 {
 	t_vector	o_diff;
@@ -93,8 +66,6 @@ bool	get_cylinder_intersection(t_cylinder *cy, t_ray *r, t_intersection *dst)
 	float		n_dot_o_diff;
 	t_pol_coef	pc;
 
-	if (get_cylinder_top_intersection(cy, r, dst))
-		return (true);
 	o_diff = vector_sub(r->o, cy->o);
 	n_dot_r = vector_dot_prod(cy->n, r->n);
 	n_dot_o_diff = vector_dot_prod(cy->n, o_diff);
@@ -112,5 +83,5 @@ bool	get_cylinder_intersection(t_cylinder *cy, t_ray *r, t_intersection *dst)
 		dst->color = cy->color;
 		return (true);
 	}
-	return (false);
+	return (get_cylinder_top_intersection(cy, r, dst));
 }

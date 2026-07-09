@@ -6,11 +6,12 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 09:59:24 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:07:43 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/env.h"
+#include "../includes/parsing.h"
 
 static void	clean_exit(t_env *env)
 {

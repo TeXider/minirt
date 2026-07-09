@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 17:17:01 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:13:59 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:58:20 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ t_vector	cylinder_surf_n(t_cylinder *cy, t_intersection *inter)
 						vector_sub(inter->p, cy->o)))));
 	if (!cy->bump.img)
 		return (surf_n);
-	compute_basis(surf_n, &e_y, &e_z);
+	e_y = cy->n;
+	e_z = vector_add(vector_scale(cy->e_y, vector_dot_prod(cy->e_y, surf_n)),
+			vector_scale(cy->e_z, vector_dot_prod(cy->e_z, surf_n)));
 	compute_bump_comp(bump_comp, &cy->bump, inter);
 	return (vector_normalize(vector_add(surf_n, vector_sub(vector_scale(e_z,
 						bump_comp[0]), vector_scale(e_y, bump_comp[1])))));

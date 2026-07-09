@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:51:47 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 11:28:47 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 # define PI 3.1415926f
 
-typedef struct s_img	t_img;
+typedef struct s_rt_screen	t_rt_screen;
+typedef struct s_img		t_img;
 
 void		render_image(t_env *env);
 
@@ -48,6 +49,8 @@ typedef struct s_ray
 	t_vector	n;
 }	t_ray;
 
+void		ray_trace_aa(t_rt_screen *rt_s, t_color *dst_color,
+				t_visual_env *v_env);
 void		ray_trace(t_ray *r, t_color *dst_color, t_visual_env *v_env);
 t_vector	point_on_ray(t_ray *r, float t);
 
@@ -152,6 +155,7 @@ float		numerical_min(float a, float b);
 
 t_color		txt_color(float x_comp, float y_comp, t_img *img);
 float		txt_intensity(float x_comp, float y_comp, t_img *img);
+t_color		sky_box_color(t_ray *r, t_img *txt);
 
 typedef struct s_top
 {

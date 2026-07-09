@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 18:25:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/13 14:58:34 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:24:56 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	init_mlx(t_env *env)
 		env->err = MLX_INIT_ERR;
 		return (true);
 	}
-	env->mlx_win = mlx_new_window(env->mlx, WIN_X, WIN_Y, env->file_name);
+	env->mlx_win = mlx_new_window(env->mlx, WIN_X, WIN_Y, "miniRT");
 	if (!env->mlx_win)
 	{
 		env->err = MLX_INIT_ERR;

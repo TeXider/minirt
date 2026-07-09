@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 00:56:41 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:19:44 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define MALLOC_ERR					4
 # define OPEN_ERR					5
 # define READ_ERR					6
+# define MLX_XPM_ERR				7
 
 typedef struct s_env		t_env;
 typedef struct s_visual_env	t_visual_env;
@@ -61,7 +62,10 @@ typedef struct s_buffer
 
 void	print_error(t_env *env);
 void	print_parsing_error(t_parsing *p);
-void	print_declaration_hint(char parsing_id);
+void	print_declaration_hint(char *parsing_id);
+char	*opt_hint1(void);
+char	*opt_hint2(void);
+void	print_opt_hint(char *parsing_id);
 void	print_extra_field_error(t_parsing *p);
 void	print_out_of_range_error(t_parsing *p);
 void	print_invalid_field_error(t_parsing *p);

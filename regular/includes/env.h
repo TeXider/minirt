@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/01 13:20:34 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:05:43 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define WIN_Y	720
 
 // VISUAL ENV
+
+typedef struct s_vector	t_vector;
 
 typedef struct s_camera
 {

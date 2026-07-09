@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/08 18:51:21 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 09:28:32 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_camera
 	float		h_fov;
 	t_vector	e_y;
 	t_vector	e_z;
+	int			r_x;
+	int			r_y;
 }	t_camera;
 
 typedef struct s_alighting
@@ -62,6 +64,12 @@ typedef struct s_visual_env
 	size_t		cylinders_count;
 	t_cone		*cones;
 	size_t		cones_count;
+	int			aa;
+	t_vector	init_dx_aa;
+	t_vector	init_dy_aa;
+	t_vector	dx_aa;
+	t_vector	dy_aa;
+	t_img		sky_box;
 	t_env		*env;
 }	t_visual_env;
 
@@ -92,6 +100,7 @@ bool	init_env(t_env *env, char *file_name);
 
 bool	init_mlx(t_env *env);
 void	put_pixel_to_img(t_img *img, int x, int y, t_color *color);
+bool	open_xpm(t_img *dst, char *filename, t_env *env);
 
 // DEBUG
 

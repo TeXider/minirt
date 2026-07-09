@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:24 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:44:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 08:51:39 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,18 @@ inline float	txt_intensity(float x_comp, float y_comp, t_img *img)
 
 	c = txt_color(x_comp, y_comp, img);
 	return (c.r / 765.0f + c.g / 765.0f + c.b / 765.0f);
+}
+
+inline t_color	sky_box_color(t_ray *r, t_img *txt)
+{
+	float	x_comp;
+	float	y_comp;
+
+	x_comp = atan2f(r->n.z, r->n.x);
+	if (x_comp < 0.0f)
+		x_comp += 2.0f * PI;
+	x_comp /= (2 * PI);
+	y_comp = acosf(numerical_min((r->n.y),
+				sign(r->n.y))) / PI;
+	return (txt_color(x_comp, y_comp, txt));
 }

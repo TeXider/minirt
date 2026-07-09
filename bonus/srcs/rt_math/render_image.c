@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:47:34 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 02:08:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 12:28:30 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ static inline void	compute_cam_ray(t_ray *dst, t_rt_screen *rt_s,
 	rt_s->sweep = vector_add(rt_s->sweep, rt_s->dx_sweep);
 }
 
-static inline void	init_sweep_vals(t_rt_screen *rt_s, t_camera *cam)
+static inline void	init_vals(t_rt_screen *rt_s, t_camera *cam, t_ray *cam_ray,
+	t_env *env)
 {
+	cam_ray->o = env->vis_env.cam.o;
 	rt_s->init_x_sweep = vector_scale(cam->e_y, tanf(cam->h_fov / 2.0f));
 	rt_s->dx_sweep = vector_scale(cam->e_y, -2.0f * tanf(cam->h_fov / 2.0f)
-			/ WIN_X);
+			/ cam->r_x);
 	rt_s->y_sweep = vector_scale(cam->e_z, tanf(cam->h_fov / 2.0f)
-			* WIN_Y / WIN_X);
+			* (float) cam->r_y / cam->r_x);
 	rt_s->dy_sweep = vector_scale(cam->e_z, -2.0f * tanf(cam->h_fov / 2.0f)
-			/ WIN_X);
+			/ cam->r_x);
 }
 
 void	render_image(t_env *env)
@@ -45,18 +47,18 @@ void	render_image(t_env *env)
 
 	if (!env->vis_env.has_cam)
 		return ;
-	compute_basis(env->vis_env.cam.n, &env->vis_env.cam.e_y,
-		&env->vis_env.cam.e_z);
-	init_sweep_vals(&rt_screen, &env->vis_env.cam);
-	cam_ray.o = env->vis_env.cam.o;
+	init_vals(&rt_screen, &env->vis_env.cam, &cam_ray, env);
 	rt_screen.pix_y = 0;
-	while (rt_screen.pix_y < WIN_Y)
+	while (rt_screen.pix_y < env->vis_env.cam.r_y)
 	{
 		rt_screen.pix_x = 0;
-		while (rt_screen.pix_x < WIN_X)
+		while (rt_screen.pix_x < env->vis_env.cam.r_x)
 		{
 			compute_cam_ray(&cam_ray, &rt_screen, &env->vis_env.cam);
-			ray_trace(&cam_ray, &pix_color, &env->vis_env);
+			if (!env->vis_env.aa)
+				ray_trace(&cam_ray, &pix_color, &env->vis_env);
+			else
+				ray_trace_aa(&rt_screen, &pix_color, &env->vis_env);
 			put_pixel_to_img(&env->img, rt_screen.pix_x, rt_screen.pix_y,
 				&pix_color);
 			rt_screen.pix_x++;

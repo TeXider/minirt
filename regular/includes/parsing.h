@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/01 13:20:48 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:16:52 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "env.h"
+# include <stdbool.h>
+# include <stdio.h>
 
 # define NO_PARSING_ERR			0
 # define UNKNOWN_ELEMENT_ERR	-1
