@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extend_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:17:47 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/02 14:12:40 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 01:33:57 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ bool	extend_cylinders_len(t_env *env)
 	env->vis_env.cylinders = tmp;
 	return (false);
 }
+
 bool	extend_lights_len(t_env *env)
 {
 	t_light	*tmp;
@@ -97,5 +98,27 @@ bool	extend_lights_len(t_env *env)
 	}
 	free(env->vis_env.lights);
 	env->vis_env.lights = tmp;
+	return (false);
+}
+
+bool	extend_cones_len(t_env *env)
+{
+	t_cone	*tmp;
+	size_t	i;
+
+	tmp = malloc(sizeof(t_cone) * (env->vis_env.cones_count + 8));
+	if (!tmp)
+	{
+		env->err = MALLOC_ERR;
+		return (true);
+	}
+	i = 0;
+	while (i < env->vis_env.cones_count)
+	{
+		tmp[i] = env->vis_env.cones[i];
+		i++;
+	}
+	free(env->vis_env.cones);
+	env->vis_env.cones = tmp;
 	return (false);
 }

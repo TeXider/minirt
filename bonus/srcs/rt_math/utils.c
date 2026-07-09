@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 12:32:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:05:32 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 01:52:23 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,27 @@ inline t_vector	point_on_ray(t_ray *r, float t)
 inline float	sign(float n)
 {
 	return (1 - 2 * (n < 0));
+}
+
+inline void	compute_basis(t_vector n, t_vector *e_y, t_vector *e_z)
+{
+	float	cos_theta;
+
+	cos_theta = sqrt(1.0f - n.z * n.z);
+	if (!cos_theta)
+	{
+		*e_z = (t_vector){0, 1, 0};
+		*e_y = (t_vector){-1, 0, 0};
+	}
+	else
+	{
+		*e_z = (t_vector){-n.y / cos_theta, n.x / cos_theta, 0};
+		*e_y = (t_vector){-n.x * n.z / cos_theta,
+			-n.y * n.z / cos_theta, cos_theta};
+	}
+}
+
+inline float	numerical_min(float a, float b)
+{
+	return (a + (b - a) * (b * sign(b) < a * sign(a)));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/02 14:26:06 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:47:30 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,14 @@ static bool	parse_shape(t_parsing *p)
 	if (p->line[p->line_i] == 's' && p->line[p->line_i + 1] == 'p'
 		&& (!p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
 		return (parse_sphere(p, &p->env->vis_env));
-	else if (p->line[p->line_i] == 'c' && p->line[p->line_i + 1] == 'y'
+	if (p->line[p->line_i] == 'c' && p->line[p->line_i + 1] == 'y'
 		&& (!p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
 		return (parse_cylinder(p, &p->env->vis_env));
-	else
-	{
-		p->parsing_err = UNKNOWN_ELEMENT_ERR;
-		return (true);
-	}
-	return (false);
+	if (p->line[p->line_i] == 'c' && p->line[p->line_i + 1] == 'o'
+		&& (!p->line[p->line_i + 2] || p->line[p->line_i + 2] == ' '))
+		return (parse_cone(p, &p->env->vis_env));
+	p->parsing_err = UNKNOWN_ELEMENT_ERR;
+	return (true);
 }
 
 static bool	parse_obj(t_parsing *p)

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
+#    By: almighty <almighty@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/07/04 10:51:02 by tpanou-d         ###   ########.fr        #
+#    Updated: 2026/07/09 01:54:06 by almighty         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror -g -O3
+CCFLAGS = -Wall -Wextra -g -O3 -Wno-incompatible-pointer-types
 MLX = libmlx.a
 MLX_DIR = mlx_linux
 
@@ -56,14 +56,22 @@ SRCS_BON	:=	$(DIR_SRCS_BON)/main.c\
 				$(DIR_SRCS_BON)/parsing/go_to_next_line.c\
 				$(DIR_SRCS_BON)/parsing/parse_file.c\
 				$(DIR_SRCS_BON)/parsing/parsing_utils.c\
+				$(DIR_SRCS_BON)/parsing/init_shape_vals.c\
 				$(DIR_SRCS_BON)/parsing/shape_parsing.c\
 				$(DIR_SRCS_BON)/parsing/singleton_parsing.c\
 				$(DIR_SRCS_BON)/parsing/get_num.c\
 				$(DIR_SRCS_BON)/parsing/get_composite.c\
 				$(DIR_SRCS_BON)/rt_math/get_intersection.c\
+				$(DIR_SRCS_BON)/rt_math/get_top_intersection.c\
+				$(DIR_SRCS_BON)/rt_math/is_in_shadow.c\
 				$(DIR_SRCS_BON)/rt_math/ray_trace.c\
 				$(DIR_SRCS_BON)/rt_math/render_image.c\
+				$(DIR_SRCS_BON)/rt_math/set_shape_inter_vals.c\
+				$(DIR_SRCS_BON)/rt_math/shape_surf_n.c\
+				$(DIR_SRCS_BON)/rt_math/shape_surf_n2.c\
+				$(DIR_SRCS_BON)/rt_math/shape_color.c\
 				$(DIR_SRCS_BON)/rt_math/utils.c\
+				$(DIR_SRCS_BON)/rt_math/textures.c\
 				$(DIR_SRCS_BON)/rt_math/vector.c\
 				$(DIR_SRCS_BON)/rt_math/vector2.c\
 				$(DIR_SRCS_BON)/err_handling/env_err.c\

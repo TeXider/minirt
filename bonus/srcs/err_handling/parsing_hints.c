@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_hints.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:57:23 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/01 13:19:24 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:47:36 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	print_declaration_hint(char parsing_id)
 			"    • L <origin>[-∞;∞] <intensity>[0.0;1.0] <color>[0-255]\n\n"
 			"    E.g.: L -40.0,50.0,0.0 0.6 10,0,255";
 	else
-		msg = shape_hint(parsing_id);
+		msg = shape_hint(parsing_id + 32);
 	printf("\e[1mⓘ\e[0m   %s\e[0m\n\n", msg);
 }

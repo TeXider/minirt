@@ -6,17 +6,20 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 09:59:24 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/08 19:01:59 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/env.h"
+#include "../includes/parsing.h"
 
 static void	clean_exit(t_env *env)
 {
+	free(env->vis_env.lights);
 	free(env->vis_env.planes);
 	free(env->vis_env.spheres);
 	free(env->vis_env.cylinders);
+	free(env->vis_env.cones);
 	if (env->img.img)
 		mlx_destroy_image(env->mlx, env->img.img);
 	if (env->mlx_win)
@@ -55,8 +58,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	if (init_env(&env, argv[1])
-		|| parse_file(&env)
-		|| init_mlx(&env))
+		|| init_mlx(&env)
+		|| parse_file(&env))
 		print_error(&env);
 	else
 	{

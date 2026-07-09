@@ -5,7 +5,7 @@ INCLIB=$(INC)/../lib
 
 UNAME := $(shell uname)
 
-CFLAGS= -I$(INC) -O3 -I.. -g
+CFLAGS= -I$(INC) -O3 -I.. -g -Wno-incompatible-pointer-types -std=gnu89
 
 NAME= mlx-test
 SRC = main.c

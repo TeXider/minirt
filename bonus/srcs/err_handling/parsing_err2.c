@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_err2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:58:31 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/01 13:19:30 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 11:35:49 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
+#include "../../includes/parsing.h"
 
 static int	field_len(char *str)
 {

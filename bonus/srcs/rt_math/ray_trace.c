@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:41:36 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/04 13:05:42 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 02:04:04 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ static t_color	compute_spec(t_ray *r, t_ray *l_r, t_light *l,
 	return (scale_color(l->color,
 			0.02f * l->intensity * l->intensity * reflection_amount
 			/ (1.0f + 0.02f * l->intensity - reflection_amount)));
+}
+
+static t_intersection	find_cone_intersection(t_ray *r,
+	t_intersection final_inter, t_visual_env *v_env)
+{
+	t_intersection	inter;
+	size_t			i;
+
+	i = -1;
+	while (++i < v_env->cones_count)
+		if (get_cone_intersection(v_env->cones + i, r, &inter)
+			&& inter.distance < final_inter.distance)
+			final_inter = inter;
+	return (final_inter);
 }
 
 static t_intersection	find_shape_intersection(t_ray *r, t_visual_env *v_env)
@@ -49,34 +63,8 @@ static t_intersection	find_shape_intersection(t_ray *r, t_visual_env *v_env)
 		if (get_cylinder_intersection(v_env->cylinders + i, r, &inter)
 			&& inter.distance < final_inter.distance)
 			final_inter = inter;
+	final_inter = find_cone_intersection(r, final_inter, v_env);
 	return (final_inter);
-}
-
-static bool	is_in_shadow(t_ray *light_r, float dis_to_light, void *shape,
-	t_visual_env *v_env)
-{
-	t_intersection	inter;
-	size_t			i;
-
-	i = -1;
-	while (++i < v_env->planes_count)
-		if (v_env->planes + i != shape
-			&& get_plane_intersection(v_env->planes + i, light_r, &inter)
-			&& inter.distance < dis_to_light)
-			return (true);
-	i = -1;
-	while (++i < v_env->spheres_count)
-		if (v_env->spheres + i != shape
-			&& get_sphere_intersection(v_env->spheres + i, light_r, &inter)
-			&& inter.distance < dis_to_light)
-			return (true);
-	i = -1;
-	while (++i < v_env->cylinders_count)
-		if (v_env->cylinders + i != shape
-			&& get_cylinder_intersection(v_env->cylinders + i, light_r, &inter)
-			&& inter.distance < dis_to_light)
-			return (true);
-	return (false);
 }
 
 static t_color	compute_lighting(t_light *light, t_ray *r,

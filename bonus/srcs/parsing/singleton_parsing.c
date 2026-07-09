@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   singleton_parsing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/03 17:58:13 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 01:34:26 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 	v_env->has_alight = true;
 	v_env->alight.color = scale_color(v_env->alight.color,
 			v_env->alight.intensity);
-	print_color(&v_env->alight.color, "fdp", 1);
 	return (false);
 }
 
@@ -53,8 +52,9 @@ bool	parse_cam(t_parsing *p, t_visual_env *v_env)
 		|| check_end_of_obj(p))
 		return (true);
 	v_env->has_cam = true;
-	v_env->cam.h_fov = ((float) h_fov_int - 0.01f * (h_fov_int == 180))
+	v_env->cam.h_fov = ((float) h_fov_int - 0.001f * (h_fov_int == 180))
 		* 3.1415926f / 180.0f;
+	v_env->cam.n = vector_normalize(v_env->cam.n);
 	return (false);
 }
 
@@ -65,9 +65,11 @@ bool	parse_light(t_parsing *p, t_visual_env *v_env)
 		&& extend_lights_len(p->env))
 		return (true);
 	if (go_to_next_field("position", p)
-		|| get_vector(&v_env->lights[v_env->lights_count].o, (float [2]){-INFINITY, INFINITY}, p)
+		|| get_vector(&v_env->lights[v_env->lights_count].o,
+			(float [2]){-INFINITY, INFINITY}, p)
 		|| go_to_next_field("intensity", p)
-		|| get_float(&v_env->lights[v_env->lights_count].intensity, (float [2]){0.0, 1.0}, false, p)
+		|| get_float(&v_env->lights[v_env->lights_count].intensity,
+			(float [2]){0.0, 1.0}, false, p)
 		|| go_to_next_field("color", p)
 		|| get_color(&v_env->lights[v_env->lights_count].color, p)
 		|| check_end_of_obj(p))

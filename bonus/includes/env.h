@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:09:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/02 14:19:22 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 18:51:21 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include "../../mlx_linux/mlx.h"
+# include "image.h"
 # include "rt_math.h"
 
 # define WIN_X	1280
@@ -59,6 +60,9 @@ typedef struct s_visual_env
 	size_t		spheres_count;
 	t_cylinder	*cylinders;
 	size_t		cylinders_count;
+	t_cone		*cones;
+	size_t		cones_count;
+	t_env		*env;
 }	t_visual_env;
 
 typedef struct s_rt_screen
@@ -73,15 +77,6 @@ typedef struct s_rt_screen
 }	t_rt_screen;
 
 // ENV
-
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
 
 typedef struct s_env
 {

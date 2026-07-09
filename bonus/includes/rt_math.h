@@ -6,7 +6,7 @@
 /*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 11:19:46 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/09 01:51:47 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 # define RT_MATH_H
 
 # include <stdbool.h>
+# include "image.h"
 # include "others.h"
 
 # define PI 3.1415926f
+
+typedef struct s_img	t_img;
 
 void		render_image(t_env *env);
 
@@ -54,7 +57,12 @@ typedef struct s_plane
 {
 	t_vector	o;
 	t_vector	n;
+	t_vector	e_y;
+	t_vector	e_z;
 	t_color		color;
+	float		check;
+	t_img		bump;
+	t_img		txt;
 }	t_plane;
 
 typedef struct s_sphere
@@ -62,20 +70,45 @@ typedef struct s_sphere
 	t_vector	o;
 	float		r;
 	t_color		color;
+	int			check;
+	t_img		bump;
+	t_img		txt;
 }	t_sphere;
 
 typedef struct s_cylinder
 {
 	t_vector	o;
 	t_vector	n;
+	t_vector	e_y;
+	t_vector	e_z;
 	float		r;
 	float		h;
 	t_color		color;
+	int			check;
+	t_img		bump;
+	t_img		txt;
 }	t_cylinder;
+
+typedef struct s_cone
+{
+	t_vector	o;
+	t_vector	n;
+	t_vector	e_y;
+	t_vector	e_z;
+	float		a;
+	float		h;
+	t_color		color;
+	float		tan_a;
+	float		inter_k;
+	int			check;
+	t_img		bump;
+	t_img		txt;
+}	t_cone;
 
 # define TPLANE		'p'
 # define TSPHERE	's'
 # define TCYLINDER	'c'
+# define TCONE		'k'
 
 typedef struct s_intersection
 {
@@ -83,8 +116,9 @@ typedef struct s_intersection
 	t_vector	p;
 	t_vector	surf_n;
 	void		*shape;
-	char		type;
 	t_color		color;
+	float		x_img_comp;
+	float		y_img_comp;
 }	t_intersection;
 
 bool		get_plane_intersection(t_plane *plane, t_ray *ray,
@@ -93,6 +127,16 @@ bool		get_sphere_intersection(t_sphere *sphere, t_ray *ray,
 				t_intersection *dst);
 bool		get_cylinder_intersection(t_cylinder *cylinder, t_ray *ray,
 				t_intersection *dst);
+bool		get_cone_intersection(t_cone *cone, t_ray *ray,
+				t_intersection *dst);
+
+bool		get_cylinder_top_intersection(t_cylinder *cy, t_ray *r,
+				t_intersection *dst);
+bool		get_cone_top_intersection(t_cone *co, t_ray *r, float n_dot_r,
+				t_intersection *dst);
+
+bool		is_in_shadow(t_ray *light_r, float dis_to_light, void *shape,
+				t_visual_env *v_env);
 
 typedef struct s_pol_coef
 {
@@ -103,5 +147,45 @@ typedef struct s_pol_coef
 
 bool		solve_pol_coef(t_pol_coef *pc, float *res);
 float		sign(float n);
+void		compute_basis(t_vector n, t_vector *e_y, t_vector *e_z);
+float		numerical_min(float a, float b);
+
+t_color		txt_color(float x_comp, float y_comp, t_img *img);
+float		txt_intensity(float x_comp, float y_comp, t_img *img);
+
+typedef struct s_top
+{
+	t_vector	o;
+	t_vector	n;
+	t_vector	e_y;
+	t_vector	e_z;
+	float		r;
+	void		*shape;
+	float		h_max;
+	int			check;
+	t_img		*bump;
+	t_img		*txt;
+	t_color		color;
+}	t_top;
+
+void		set_plane_inter_vals(t_plane *pl, t_ray *r, t_intersection *dst);
+void		set_sphere_inter_vals(t_sphere *sp, t_ray *r, t_intersection *dst);
+void		set_top_inter_vals(t_top *t, float h, t_ray *r,
+				t_intersection *dst);
+void		set_cylinder_inter_vals(t_cylinder *cy, t_ray *r,
+				t_intersection *dst);
+void		set_cone_inter_vals(t_cone *co, t_ray *r, t_intersection *dst);
+
+t_color		plane_color(t_plane *p, t_intersection *inter);
+t_color		point_color(int check, t_img *txt, t_color c,
+				t_intersection *inter);
+t_color		inv_color(t_color c, bool inv);
+
+void		compute_bump_comp(float bc[2], t_img *bump, t_intersection *inter);
+t_vector	plane_surf_n(t_plane *pl, t_intersection *inter);
+t_vector	sphere_surf_n(t_sphere *sp, t_intersection *inter);
+t_vector	cylinder_surf_n(t_cylinder *cy, t_intersection *inter);
+t_vector	top_surf_n(t_top *t, t_intersection *inter);
+t_vector	cone_surf_n(t_cone *co, t_intersection *inter);
 
 #endif

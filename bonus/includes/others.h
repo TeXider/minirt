@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:47:13 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/03 17:38:01 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 00:56:41 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "parsing.h"
 
 # define NO_ERR						0
 # define INVALID_ARG_COUNT_ERR		1
@@ -43,6 +42,7 @@ t_color	add_colors(t_color a, t_color b);
 bool	extend_planes_len(t_env *env);
 bool	extend_spheres_len(t_env *env);
 bool	extend_cylinders_len(t_env *env);
+bool	extend_cones_len(t_env *env);
 bool	extend_lights_len(t_env *env);
 
 void	safe_free(void **ptr);

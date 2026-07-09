@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:08:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/01 13:20:48 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 19:55:21 by almighty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ typedef struct s_env		t_env;
 typedef struct s_visual_env	t_visual_env;
 typedef struct s_vector		t_vector;
 typedef struct s_color		t_color;
+
+typedef struct s_plane		t_plane;
+typedef struct s_sphere		t_sphere;
+typedef struct s_cylinder	t_cylinder;
+typedef struct s_cone		t_cone;
 
 typedef struct s_file
 {
@@ -78,11 +83,17 @@ bool	parse_light(t_parsing *p, t_visual_env *v_env);
 bool	parse_plane(t_parsing *p, t_visual_env *v_env);
 bool	parse_sphere(t_parsing *p, t_visual_env *v_env);
 bool	parse_cylinder(t_parsing *p, t_visual_env *v_env);
+bool	parse_cone(t_parsing *p, t_visual_env *v_env);
 
 bool	get_float(float *dst, float range[2], bool comma_expected,
 			t_parsing *p);
 bool	get_int(int *dst, int range[2], bool comma_expected, t_parsing *p);
 bool	get_vector(t_vector *dst, float range[2], t_parsing *p);
 bool	get_color(t_color *dst, t_parsing *p);
+
+void	init_plane_vals(t_plane *pl, void *mlx_ptr);
+void	init_sphere_vals(t_sphere *sp, void *mlx_ptr);
+void	init_cylinder_vals(t_cylinder *cy);
+void	init_cone_vals(t_cone *co);
 
 #endif
