@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: almighty <almighty@student.42.fr>          +#+  +:+       +#+         #
+#    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/07/09 22:42:26 by almighty         ###   ########.fr        #
+#    Updated: 2026/07/10 08:15:40 by tpanou-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/err_handling/parsing_err.c\
 			$(DIR_SRCS)/err_handling/parsing_err2.c\
 			$(DIR_SRCS)/err_handling/parsing_hints.c\
-			$(DIR_SRCS)/.debug.c
 
 SRCS_BON	:=	$(DIR_SRCS_BON)/main.c\
 				$(DIR_SRCS_BON)/others/colors.c\
@@ -83,7 +82,6 @@ SRCS_BON	:=	$(DIR_SRCS_BON)/main.c\
 				$(DIR_SRCS_BON)/err_handling/parsing_err.c\
 				$(DIR_SRCS_BON)/err_handling/parsing_err2.c\
 				$(DIR_SRCS_BON)/err_handling/parsing_hints.c\
-				$(DIR_SRCS_BON)/.debug.c
 
 OBJS		:=	$(patsubst %.c, $(DIR_OBJS)/%.o, $(subst $(DIR_SRCS)/,,$(SRCS)))
 OBJS_BON	:=	$(patsubst %.c, $(DIR_OBJS_BON)/%.o, $(subst $(DIR_SRCS_BON)/,,$(SRCS_BON)))

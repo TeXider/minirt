@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_funcs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 18:25:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 16:20:37 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:17:17 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	put_pixel_to_img(t_img *img, int x, int y, t_color *color)
 
 bool	open_xpm(t_img *dst, char *filename, t_env *env)
 {
+	if (dst->img)
+		return (false);
 	dst->img = mlx_xpm_file_to_image(env->mlx, filename, &dst->width,
 			&dst->height);
 	if (!dst->img)
