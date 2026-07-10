@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shape_surf_n.c                                     :+:      :+:    :+:   */
+/*   shape_surf_n_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 17:17:01 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 12:58:20 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:32:02 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/rt_math.h"
+#include "../../includes/rt_math_bonus.h"
 
 void	compute_bump_comp(float bc[2], t_img *bump, t_intersection *inter)
 {

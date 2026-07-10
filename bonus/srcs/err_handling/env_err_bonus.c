@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_err.c                                          :+:      :+:    :+:   */
+/*   env_err_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:59:52 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 16:48:55 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:21 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <errno.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 static void	print_io_err(t_env *env)
 {

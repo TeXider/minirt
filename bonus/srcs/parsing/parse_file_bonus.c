@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
+/*   parse_file_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:13:28 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/07 22:47:30 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:15 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 #include "../../includes/env.h"
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 static bool	init_parsing(t_parsing *p, t_env *env)
 {

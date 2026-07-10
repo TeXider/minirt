@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_trace_aa.c                                     :+:      :+:    :+:   */
+/*   ray_trace_aa_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 02:18:29 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 08:34:56 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:47 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 static t_vector	compute_aa_ray(int aa, int x, int y, t_rt_screen *rt_s)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_err2.c                                     :+:      :+:    :+:   */
+/*   parsing_err2_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:58:31 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 14:06:54 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:28 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 static int	field_len(char *str)
 {

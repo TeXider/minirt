@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extend_len.c                                       :+:      :+:    :+:   */
+/*   extend_len_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:17:47 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:33:57 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:40 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 bool	extend_planes_len(t_env *env)
 {

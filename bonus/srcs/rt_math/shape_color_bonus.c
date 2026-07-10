@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shape_color.c                                      :+:      :+:    :+:   */
+/*   shape_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 12:23:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/08 22:43:52 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:59 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/rt_math.h"
+#include "../../includes/rt_math_bonus.h"
 
 t_color	inv_color(t_color c, bool inv)
 {

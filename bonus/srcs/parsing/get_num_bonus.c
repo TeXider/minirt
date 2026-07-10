@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_num.c                                          :+:      :+:    :+:   */
+/*   get_num_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 21:09:13 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 12:10:11 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:59 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 static bool	is_valid_end_char(char end_char, t_parsing *p)
 {

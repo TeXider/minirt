@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 21:26:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/30 12:33:20 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:19 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
-#include "../../includes/parsing.h"
+#include "../../includes/env_bonus.h"
+#include "../../includes/parsing_bonus.h"
 
 bool	is_end_of_field(t_parsing *p)
 {

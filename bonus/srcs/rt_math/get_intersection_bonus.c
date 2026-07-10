@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_intersection.c                                 :+:      :+:    :+:   */
+/*   get_intersection_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:08:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 01:48:14 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:38 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 bool	get_plane_intersection(t_plane *pl, t_ray *r, t_intersection *dst)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_composite.c                                    :+:      :+:    :+:   */
+/*   get_composite_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 20:02:50 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 11:00:02 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:56 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 bool	get_vector(t_vector *dst, float range[2], t_parsing *p)
 {

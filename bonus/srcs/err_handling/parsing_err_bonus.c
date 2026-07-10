@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_err.c                                      :+:      :+:    :+:   */
+/*   parsing_err_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:55:58 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 14:06:48 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:26 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 static void	print_invalid_opt_error(t_parsing *p)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2.c                                          :+:      :+:    :+:   */
+/*   vector2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:27:56 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/06/19 12:16:42 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:32:17 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 inline float	vector_dot_prod(t_vector v, t_vector u)
 {

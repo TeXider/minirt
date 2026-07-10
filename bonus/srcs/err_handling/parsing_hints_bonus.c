@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_hints.c                                    :+:      :+:    :+:   */
+/*   parsing_hints_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:57:23 by tpanou-d          #+#    #+#             */
-/*   Updated: 2026/07/09 16:20:01 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:31 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../../includes/others.h"
+#include "../../includes/others_bonus.h"
 
 static char	*shape_hint(char *parsing_id)
 {

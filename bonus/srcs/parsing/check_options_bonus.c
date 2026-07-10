@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_options.c                                    :+:      :+:    :+:   */
+/*   check_options_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 09:03:29 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/10 08:22:45 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:53 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 bool	check_cam_options(t_camera *cam, t_visual_env *v_env, t_parsing *p)
 {

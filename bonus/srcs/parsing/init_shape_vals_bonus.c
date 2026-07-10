@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_shape_vals.c                                  :+:      :+:    :+:   */
+/*   init_shape_vals_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 10:50:50 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 17:47:11 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:07 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 void	init_plane_vals(t_plane *pl)
 {

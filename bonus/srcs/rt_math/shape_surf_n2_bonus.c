@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shape_surf_n2.c                                    :+:      :+:    :+:   */
+/*   shape_surf_n2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 00:58:20 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 13:04:40 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:32:05 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "../../includes/rt_math_bonus.h"
 
 static t_vector	init_cone_surf_n(t_intersection *dst, t_cone *co)
 {

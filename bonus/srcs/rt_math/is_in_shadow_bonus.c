@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_in_shadow.c                                     :+:      :+:    :+:   */
+/*   is_in_shadow_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 01:39:41 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:54:53 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:45 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 static bool	is_in_cone_shadow(t_ray *light_r, float dis_to_light, void *shape,
 	t_visual_env *v_env)

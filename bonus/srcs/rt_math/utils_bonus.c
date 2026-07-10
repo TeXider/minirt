@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 12:32:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:52:23 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:32:13 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 inline bool	solve_pol_coef(t_pol_coef *pc, float *res)
 {

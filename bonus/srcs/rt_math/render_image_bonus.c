@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_image.c                                     :+:      :+:    :+:   */
+/*   render_image_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:47:34 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 12:28:30 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:54 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 static inline void	compute_cam_ray(t_ray *dst, t_rt_screen *rt_s,
 	t_camera *cam)

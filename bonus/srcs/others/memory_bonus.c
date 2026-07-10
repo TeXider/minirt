@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   others.c                                           :+:      :+:    :+:   */
+/*   memory_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 12:23:29 by almighty          #+#    #+#             */
-/*   Updated: 2026/06/08 21:57:36 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:45 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/env.h"
+#include "../../includes/env_bonus.h"
 
 void	safe_free(void **ptr)
 {

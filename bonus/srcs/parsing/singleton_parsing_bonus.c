@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_parsing.c                                :+:      :+:    :+:   */
+/*   singleton_parsing_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:43:36 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 12:28:42 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:34 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 bool	parse_alight(t_parsing *p, t_visual_env *v_env)
 {

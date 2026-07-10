@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   option_utils.c                                     :+:      :+:    :+:   */
+/*   option_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 10:11:40 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/10 08:25:45 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:11 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../../includes/parsing_bonus.h"
 
 bool	is_end_of_option(t_parsing *p)
 {

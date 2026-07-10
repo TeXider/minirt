@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_math.h                                          :+:      :+:    :+:   */
+/*   rt_math_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 22:00:58 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 11:28:47 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:30:09 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RT_MATH_H
 
 # include <stdbool.h>
-# include "image.h"
-# include "others.h"
+# include "image_bonus.h"
+# include "others_bonus.h"
 
 # define PI 3.1415926f
 

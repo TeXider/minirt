@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_top_intersection.c                             :+:      :+:    :+:   */
+/*   get_top_intersection_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almighty <almighty@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 01:45:18 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 01:52:15 by almighty         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:31:43 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "../../includes/rt_math_bonus.h"
 
 static inline bool	get_cylinder_top_up_intersection(t_cylinder *cy, t_ray *r,
 	t_intersection *dst)

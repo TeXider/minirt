@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:51:19 by almighty          #+#    #+#             */
-/*   Updated: 2026/07/09 17:40:40 by tpanou-d         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:32:21 by tpanou-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/env.h"
-#include "../includes/parsing.h"
+#include "../includes/env_bonus.h"
+#include "../includes/parsing_bonus.h"
 
 static void	destroy_shapes_imgs2(t_visual_env *v_env)
 {
