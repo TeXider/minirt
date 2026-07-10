@@ -6,7 +6,7 @@
 #    By: tpanou-d <tpanou-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 21:00:05 by almighty          #+#    #+#              #
-#    Updated: 2026/07/10 08:15:40 by tpanou-d         ###   ########.fr        #
+#    Updated: 2026/07/10 08:34:37 by tpanou-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,41 +47,41 @@ SRCS	:=	$(DIR_SRCS)/main.c\
 			$(DIR_SRCS)/err_handling/parsing_err2.c\
 			$(DIR_SRCS)/err_handling/parsing_hints.c\
 
-SRCS_BON	:=	$(DIR_SRCS_BON)/main.c\
-				$(DIR_SRCS_BON)/others/colors.c\
-				$(DIR_SRCS_BON)/others/init_env.c\
-				$(DIR_SRCS_BON)/others/mlx_funcs.c\
-				$(DIR_SRCS_BON)/others/memory.c\
-				$(DIR_SRCS_BON)/others/extend_len.c\
-				$(DIR_SRCS_BON)/parsing/go_to_next_line.c\
-				$(DIR_SRCS_BON)/parsing/parse_file.c\
-				$(DIR_SRCS_BON)/parsing/parsing_utils.c\
-				$(DIR_SRCS_BON)/parsing/init_shape_vals.c\
-				$(DIR_SRCS_BON)/parsing/check_options.c\
-				$(DIR_SRCS_BON)/parsing/option_utils.c\
-				$(DIR_SRCS_BON)/parsing/shape_parsing.c\
-				$(DIR_SRCS_BON)/parsing/singleton_parsing.c\
-				$(DIR_SRCS_BON)/parsing/get_num.c\
-				$(DIR_SRCS_BON)/parsing/get_composite.c\
-				$(DIR_SRCS_BON)/rt_math/get_intersection.c\
-				$(DIR_SRCS_BON)/rt_math/get_top_intersection.c\
-				$(DIR_SRCS_BON)/rt_math/is_in_shadow.c\
-				$(DIR_SRCS_BON)/rt_math/ray_trace_aa.c\
-				$(DIR_SRCS_BON)/rt_math/ray_trace.c\
-				$(DIR_SRCS_BON)/rt_math/render_image.c\
-				$(DIR_SRCS_BON)/rt_math/set_shape_inter_vals.c\
-				$(DIR_SRCS_BON)/rt_math/shape_surf_n.c\
-				$(DIR_SRCS_BON)/rt_math/shape_surf_n2.c\
-				$(DIR_SRCS_BON)/rt_math/shape_color.c\
-				$(DIR_SRCS_BON)/rt_math/utils.c\
-				$(DIR_SRCS_BON)/rt_math/textures.c\
-				$(DIR_SRCS_BON)/rt_math/vector.c\
-				$(DIR_SRCS_BON)/rt_math/vector2.c\
-				$(DIR_SRCS_BON)/err_handling/opt_hint_msgs.c\
-				$(DIR_SRCS_BON)/err_handling/env_err.c\
-				$(DIR_SRCS_BON)/err_handling/parsing_err.c\
-				$(DIR_SRCS_BON)/err_handling/parsing_err2.c\
-				$(DIR_SRCS_BON)/err_handling/parsing_hints.c\
+SRCS_BON	:=	$(DIR_SRCS_BON)/main_bonus.c\
+				$(DIR_SRCS_BON)/others/colors_bonus.c\
+				$(DIR_SRCS_BON)/others/init_env_bonus.c\
+				$(DIR_SRCS_BON)/others/mlx_funcs_bonus.c\
+				$(DIR_SRCS_BON)/others/memory_bonus.c\
+				$(DIR_SRCS_BON)/others/extend_len_bonus.c\
+				$(DIR_SRCS_BON)/parsing/go_to_next_line_bonus.c\
+				$(DIR_SRCS_BON)/parsing/parse_file_bonus.c\
+				$(DIR_SRCS_BON)/parsing/parsing_utils_bonus.c\
+				$(DIR_SRCS_BON)/parsing/init_shape_vals_bonus.c\
+				$(DIR_SRCS_BON)/parsing/check_options_bonus.c\
+				$(DIR_SRCS_BON)/parsing/option_utils_bonus.c\
+				$(DIR_SRCS_BON)/parsing/shape_parsing_bonus.c\
+				$(DIR_SRCS_BON)/parsing/singleton_parsing_bonus.c\
+				$(DIR_SRCS_BON)/parsing/get_num_bonus.c\
+				$(DIR_SRCS_BON)/parsing/get_composite_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/get_intersection_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/get_top_intersection_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/is_in_shadow_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/ray_trace_aa_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/ray_trace_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/render_image_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/set_shape_inter_vals_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/shape_surf_n_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/shape_surf_n2_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/shape_color_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/utils_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/textures_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/vector_bonus.c\
+				$(DIR_SRCS_BON)/rt_math/vector2_bonus.c\
+				$(DIR_SRCS_BON)/err_handling/opt_hint_msgs_bonus.c\
+				$(DIR_SRCS_BON)/err_handling/env_err_bonus.c\
+				$(DIR_SRCS_BON)/err_handling/parsing_err_bonus.c\
+				$(DIR_SRCS_BON)/err_handling/parsing_err2_bonus.c\
+				$(DIR_SRCS_BON)/err_handling/parsing_hints_bonus.c\
 
 OBJS		:=	$(patsubst %.c, $(DIR_OBJS)/%.o, $(subst $(DIR_SRCS)/,,$(SRCS)))
 OBJS_BON	:=	$(patsubst %.c, $(DIR_OBJS_BON)/%.o, $(subst $(DIR_SRCS_BON)/,,$(SRCS_BON)))
