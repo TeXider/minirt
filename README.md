@@ -216,8 +216,7 @@ project:
 - [Scratchapixel](https://www.scratchapixel.com/) — in-depth articles on
   ray-object intersection math (spheres, planes, cylinders), UV mapping, and
   coordinate systems.
-- [MiniLibX documentation](https://github.com/42Paris/minilibx-linux) — for
-  window creation and pixel buffer management.
+- [Cosinekitty](http://cosinekitty.com/raytrace/raytrace_us.pdf) — The book Fundamentals of Ray Tracing
 
 ### AI usage
 
